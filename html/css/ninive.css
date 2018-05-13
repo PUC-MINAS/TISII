@@ -1,0 +1,26 @@
+body{
+    background-image: url("images/stacks.jpg");
+}
+.standart{
+    background-color: #442d16;
+}
+
+#niniveslogan,#ninivetitle{
+    font-family: "Courier New";
+    display: block;
+    text-align: "center";
+}
+
+#ninivetitle{
+    font-size: 4em;
+    
+}
+
+#niniveslogan{
+    font-size: 2em;
+}
+
+#index{
+    height: 100%;
+    max-height: 100%;
+}
