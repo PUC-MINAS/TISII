@@ -17,7 +17,10 @@
     <link href="css/full.css" rel="stylesheet">
     <style>
       body{
-        background-image: url(https://libraryapps.fairfield.edu/cdn/images/stacks.jpg)
+        background-image: url("images/stacks.jpg")
+      }
+      #navbar{
+        background-color: #663300;
       }
     </style>
   </head>
@@ -25,7 +28,7 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" background-color: "#663300";>
       <div class="container">
         <a class="navbar-brand" href="#">Ninive</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,6 +57,7 @@
 
     <!-- Page Content -->
     
+    
     <div class="input-group input-group-lg">
       <input type="text" name="Search" class="form-control" id="mce-EMAIL" placeholder="Search a book">
       <span class="input-group-btn">
@@ -61,7 +65,7 @@
       </span>
     </div>
 
-
+    
     <!-- Modal -->
     <div id="modalLogin" class="modal fade" role="dialog">
       <div class="modal-dialog">
@@ -77,15 +81,15 @@
           <div class="modal-body">
               <form action="">
                 <div class="form-group">
-                  <label for="email">Email address:</label>
+                  <label for="email">Email:</label>
                   <input placeholder="Email" type="email" class="form-control" id="email">
                 </div>
                 <div class="form-group">
-                  <label for="pwd">Password:</label>
-                  <input placeholder="Password" type="password" class="form-control" id="pwd">
+                  <label for="pwd">Senha:</label>
+                  <input placeholder="Senha" type="password" class="form-control" id="pwd">
                 </div>
                 <div class="checkbox">
-                  <label><input type="checkbox"> Remember me</label>
+                  <label><input type="checkbox"> Lembre se de mim</label>
                 </div>
                 <button type="submit" class="btn btn-default">Login</button>
               </form>
