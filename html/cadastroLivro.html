@@ -56,14 +56,14 @@
 
     <!-- Page Content -->
     
-    <div class="container painel" id="index">
+    <div class="container painel" >
     	<div class="row">
     		<div class="col-md-12">
     			<h1>Cadastrar Livro</h1>
     			<hr>
     		</div>		
     	</div>
-    	<form>
+    	<form id="formBook">
     		<div class="row">
     			<div class="col-md-12">
     				<div class="form-group">
@@ -121,7 +121,7 @@
     			<textarea class="form-control" name="synopsis"></textarea>	
     		</div>
     		<div class="form-group">
-    			<button type="submit" class="btn btn-primary">Cadastrar</button>
+    			<button type="button" class="btn btn-primary" onclick="createBook();">Cadastrar</button>
     		</div>
     	</form>      
     </div>
@@ -168,6 +168,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="scripts/scripts.js"></script>		
 
   </body>
 
