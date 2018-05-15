@@ -46,9 +46,9 @@ public class HTTPServer implements Container{
 			String mensagem;
 			
 			if ( path.startsWith("/services/book/create") ) {
-				// http://127.0.0.1:880/services/book/create
+				// http://127.0.0.1:781/services/book/create
 				mensagem = ServiceBook.create(request);
-				//this.enviaResposta(Status.CREATED, response, mensagem);
+				sendResponse(Status.CREATED, response, mensagem);
 			}
 			else {
 				this.notFind(response, path);
@@ -74,7 +74,8 @@ public class HTTPServer implements Container{
 		long time = System.currentTimeMillis();
 
 		response.setValue("Content-Type", "application/json");
-		response.setValue("Server", "Controle de estoqueService (1.0)");
+		response.setValue("Server", "WebService System Ninive (1.0)");
+		response.setValue("Access-Control-Allow-Origin", "null");
 		response.setDate("Date", time);
 		response.setDate("Last-Modified", time);
 		response.setStatus(status);
