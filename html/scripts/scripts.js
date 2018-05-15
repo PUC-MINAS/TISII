@@ -8,14 +8,19 @@ function createBook (){
     		
     	},
     	beforeSend : function(){
-      
+      		
     	}
 	}).done(function(response){
-		alert("done");
-		console.log(response);
+		
+		bootbox.alert({
+			message: "Cadastro realizado com sucesso",
+			size: "small"
+		});
 	}		
 	).fail(function(){
-		alert("fail");
-	}
-	);
+		bootbox.alert({
+			message: "Não foi possível realizar o cadastro.",
+			size: "small"
+		});
+	});
 }
