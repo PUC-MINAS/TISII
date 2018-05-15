@@ -43,12 +43,28 @@ public class HTTPServer implements Container{
 		try {
 			String path = request.getPath().getPath();
 			String method = request.getMethod();
-			String mensagem;
+			JSONObject msg = new JSONObject();
 			
-			if ( path.startsWith("/services/book/create") ) {
-				// http://127.0.0.1:781/services/book/create
-				mensagem = ServiceBook.create(request);
-				sendResponse(Status.CREATED, response, mensagem);
+			if(path.startsWith("/services/book/create")&&method.compareToIgnoreCase("POST")==0){
+				// http://127.0.0.1:781/services/book/create		
+				if(ServiceBook.create(request)) {
+					msg.put("status", Status.CREATED);
+					sendResponse(Status.CREATED, response, msg.toString());
+				}
+				else {
+					msg.put("status", Status.NOT_MODIFIED);
+					sendResponse(Status.NOT_MODIFIED, response, msg.toString());
+				}	
+			}
+			else if(path.startsWith("/services/exemplary/create")) {
+				if(ServiceExemplary.create(request)) {
+					msg.put("status", Status.CREATED);
+					sendResponse(Status.CREATED, response, msg.toString());
+				}
+				else {
+					msg.put("status", Status.NOT_MODIFIED);
+					sendResponse(Status.NOT_MODIFIED, response, msg.toString());
+				}	
 			}
 			else {
 				this.notFind(response, path);
@@ -63,7 +79,7 @@ public class HTTPServer implements Container{
 	
 	private void notFind(Response response, String path) throws Exception {
 		JSONObject error = new JSONObject();
-		error.put("error", "Not find.");
+		error.put("error", Status.NOT_FOUND);
 		error.put("path", path);
 		sendResponse(Status.NOT_FOUND, response, error.toString());
 	}

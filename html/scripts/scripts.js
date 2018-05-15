@@ -24,3 +24,31 @@ function createBook (){
 		});
 	});
 }
+
+function createExemplary(){
+	var form = $('#formExemplary')[0];
+	$.ajax({
+		url : "http://127.0.0.1:781/services/exemplary/create",
+	    type : 'POST',
+    	data : {
+    		book: form.book.value,
+    		localization: form.localization.value,
+    		braile: form.braile.checked    		
+    	},
+    	beforeSend : function(){
+      		
+    	}
+	}).done(function(response){
+		
+		bootbox.alert({
+			message: "Cadastro realizado com sucesso",
+			size: "small"
+		});
+	}		
+	).fail(function(){
+		bootbox.alert({
+			message: "Não foi possível realizar o cadastro.",
+			size: "small"
+		});
+	});
+}

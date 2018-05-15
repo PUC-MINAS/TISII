@@ -4,14 +4,12 @@ import org.simpleframework.http.Request;
 
 public class ServiceBook {
 
-	public static String create(Request request) {
+	public static boolean create(Request request) {
 		// TODO Auto-generated method stub
 		Query query = request.getQuery();
 		String name = query.get("name");
 		
-		JSONObject msg = new JSONObject();
-		msg.put("status", "create successful");
-		return msg.toString();
+		return true;
 	}
 
 }

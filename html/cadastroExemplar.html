@@ -56,17 +56,17 @@
 
     <!-- Page Content -->
     
-    <div class="container painel" id="index">
+    <div class="container painel">
     	<div class="row">
     		<div class="col-md-12">
     			<h1>Cadastrar Exemplar</h1>
     			<hr>
     		</div>		
     	</div>
-    	<form>
+    	<form id="formExemplary">
     		<div class="form-group">
-    			<label for="">Selecione o Livro</label>
-    			<select class="form-control">
+    			<label for="book">Selecione o Livro</label>
+    			<select class="form-control" name="book">
     				<option value="1">Livro1</option>
     				<option value="2">Livro2</option>
     				<option value="3">Livro3</option>
@@ -75,15 +75,15 @@
     			</select>
     		</div>
     		<div class="form-group">
-    			<label for="">Localização</label>
-    			<input type="text" name="" class="form-control">
+    			<label for="localization">Localização</label>
+    			<input type="text" name="localization" class="form-control">
     		</div>
     		<div class="form-group">
-    			<label for="">Versão em braile</label>
-    			<input type="checkbox" name="" clas="form-control">	
+    			<label for="braile">Versão em braile</label>
+    			<input type="checkbox" name="braile" clas="form-control">	
     		</div>
     		<div class="form-group">
-    			<button type="submit" class="btn btn-primary">Cadastrar</button>
+    			<button type="button" class="btn btn-primary" onclick="createExemplary();">Cadastrar</button>
     		</div>
     	</form>      
     </div>
@@ -130,6 +130,8 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="scripts/scripts.js"></script> 
+    <script type="text/javascript" src="scripts/bootbox.min.js"></script> 
 
   </body>
 
