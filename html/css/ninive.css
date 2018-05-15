@@ -1,7 +1,7 @@
 body{
     background-image: url("images/stacks.jpg");
 }
-.standart{
+.standard{
     background-color: #442d16;
 }
 
@@ -19,8 +19,6 @@ body{
 #niniveslogan{
     font-size: 2em;
 }
-
-#index{
-    height: 100%;
-    max-height: 100%;
+#index-container{
+    
 }

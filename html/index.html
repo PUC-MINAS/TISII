@@ -26,7 +26,7 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark standart">
+    <nav class="navbar navbar-expand-lg navbar-dark standard">
       <div class="container">
         <a class="navbar-brand" href="#">Ninive</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,21 +53,20 @@
       </div>
     </nav>
 
-    <!-- Page Content -->
-    
-    <div class="container" id="index">
-      <div class="row align-items-start justify-content-center">
-        <h1 id="ninivetitle" class="col-4">Ninive</h1>
-      </div>
+    <!-- Page Content -->    
+    <div class="container" id="index-container">
       <div class="row justify-content-center">
         <h1 id="niniveslogan" class="col-4">نينوى</h1>
+      </div>
+      <div class="row justify-content-center">
+        <h1 id="ninivetitle"  class="col-4">Ninive</h1>
       </div>
       <div class="row align-self-end justify-content-center">
         <div class="col-4">
           <div class="input-group">
             <input type="text" name="Search" class="form-control" placeholder="Search a book">
             <span class="input-group-btn">
-              <button type="submit" name="Search" id="mc-embedded-subscribe" class="btn btn-secondary standart">Search</button>
+              <button type="submit" name="Search" id="mc-embedded-subscribe" class="btn btn-secondary standard">Search</button>
             </span>
           </div>
         </div>
@@ -79,8 +78,8 @@
     <div id="modalLogin" class="modal fade" role="dialog">
       <div class="modal-dialog">
 
-        <!-- Modal header-->
         <div class="modal-content">
+          <!-- Modal header-->
           <div class="modal-header">
             <h4 class="modal-title">Login</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -88,6 +87,9 @@
           
           <!-- Modal Body -->
           <div class="modal-body">
+              <div class="alert alert-danger" id="login-incorreto">
+                  <strong>Wrong username or password!</strong><br>Change a few things up and try submitting again.
+                </div>
               <form action="">
                 <div class="form-group">
                   <label for="email">Email</label>
