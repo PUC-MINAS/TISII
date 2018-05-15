@@ -5,10 +5,9 @@ body{
     background-color: #442d16;
 }
 
-#niniveslogan,#ninivetitle{
+#niniveslogan, #ninivetitle{
     font-family: "Courier New";
-    display: block;
-    text-align: "center";
+    text-align: center;
 }
 
 #ninivetitle{
@@ -19,6 +18,9 @@ body{
 #niniveslogan{
     font-size: 2em;
 }
+
 #index-container{
-    
+    height: 100%;
+    max-height: 100%;
+    margin: 0 auto;
 }

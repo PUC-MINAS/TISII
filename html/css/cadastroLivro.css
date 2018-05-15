@@ -1,0 +1,15 @@
+/*
+	Author: Ravi Assis;
+	Date: 14/05/2018;
+*/
+
+.painel {
+	background-color: white;
+	opacity: 0.9;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.painel button{
+	margin: 0 45%;
+}

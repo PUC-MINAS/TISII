@@ -16,6 +16,7 @@
     <!-- Custom styles for this template -->
     <link href="css/full.css" rel="stylesheet">
     <link href="css/ninive.css" rel="stylesheet">
+    <link href="css/cadastroLivro.css" rel="stylesheet">
     <style>
       body{
         background-image: url("images/stacks.jpg");
@@ -26,7 +27,7 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark standard">
+    <nav class="navbar navbar-expand-lg navbar-dark standart">
       <div class="container">
         <a class="navbar-brand" href="#">Ninive</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,29 +54,38 @@
       </div>
     </nav>
 
-
-    <!-- Page Content -->    
-    <div class="container" id="index-container">
-      <div class="row align-items-start justify-content-center">
-        <div class="row justify-content-center">
-          <h1 id="niniveslogan" class="col-4">نينوى</h1>
-        </div>
-        <div class="col-md-4">
-          <h1 id="ninivetitle">Ninive</h1>
-        </div>
-      <div class="row justify-content-center">
-        <h1 id="ninivetitle"  class="col-4">Ninive</h1>
-      </div>
-      <div class="row align-self-end justify-content-center">
-        <div class="col-4">
-          <div class="input-group">
-            <input type="text" name="Search" class="form-control" placeholder="Search a book">
-            <span class="input-group-btn">
-              <button type="submit" name="Search" id="mc-embedded-subscribe" class="btn btn-secondary standard">Search</button>
-            </span>
-          </div>
-        </div>
-      </div>
+    <!-- Page Content -->
+    
+    <div class="container painel" id="index">
+    	<div class="row">
+    		<div class="col-md-12">
+    			<h1>Cadastrar Exemplar</h1>
+    			<hr>
+    		</div>		
+    	</div>
+    	<form>
+    		<div class="form-group">
+    			<label for="">Selecione o Livro</label>
+    			<select class="form-control">
+    				<option value="1">Livro1</option>
+    				<option value="2">Livro2</option>
+    				<option value="3">Livro3</option>
+    				<option value="4">Livro4</option>
+    				<option value="5">Livro5</option>
+    			</select>
+    		</div>
+    		<div class="form-group">
+    			<label for="">Localização</label>
+    			<input type="text" name="" class="form-control">
+    		</div>
+    		<div class="form-group">
+    			<label for="">Versão em braile</label>
+    			<input type="checkbox" name="" clas="form-control">	
+    		</div>
+    		<div class="form-group">
+    			<button type="submit" class="btn btn-primary">Cadastrar</button>
+    		</div>
+    	</form>      
     </div>
 
     
@@ -83,8 +93,8 @@
     <div id="modalLogin" class="modal fade" role="dialog">
       <div class="modal-dialog">
 
+        <!-- Modal header-->
         <div class="modal-content">
-          <!-- Modal header-->
           <div class="modal-header">
             <h4 class="modal-title">Login</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -92,9 +102,6 @@
           
           <!-- Modal Body -->
           <div class="modal-body">
-              <div class="alert alert-danger" id="login-incorreto">
-                  <strong>Wrong username or password!</strong><br>Change a few things up and try submitting again.
-                </div>
               <form action="">
                 <div class="form-group">
                   <label for="email">Email</label>
@@ -105,8 +112,7 @@
                   <input placeholder="Senha" type="password" class="form-control" id="pwd">
                 </div>
                 <div class="checkbox">
-                  <label display="block"><input type="checkbox"> Lembre se de mim</label>
-                  <br></label><a href="">Ainda não tenho conta</a>
+                  <label display="block"><input type="checkbox"> Lembre se de mim <a href="" text-align="right">Ainda não possuo conta</a></label>
                 </div>
                 <button type="submit" class="btn btn-default">Login</button>
               </form>
