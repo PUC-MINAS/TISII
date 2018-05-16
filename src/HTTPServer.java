@@ -66,9 +66,8 @@ public class HTTPServer implements Container{
 					sendResponse(Status.NOT_MODIFIED, response, msg.toString());
 				}	
 			}
-			else if(path.startsWith("/services/book/retrieve")) {
-				String test = ServiceBook.toList().toString();
-				msg.put("books", ServiceBook.toList());
+			else if(path.startsWith("/services/book/read")) {
+				msg.put("books", ServiceBook.read(request));
 				msg.put("status", Status.OK);
 				sendResponse(Status.OK, response, msg.toString());
 			}

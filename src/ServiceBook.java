@@ -7,6 +7,8 @@ import org.simpleframework.http.Query;
 import org.simpleframework.http.Request;
 
 public class ServiceBook {
+	
+	private static Archive<Book> books = new Archive<Book>("Archives/books.json");
 
 	public static boolean create(Request request) {
 		// TODO Auto-generated method stub
@@ -16,24 +18,17 @@ public class ServiceBook {
 		return true;
 	}
 
-	public static List<Book> toList() {
+	public static List<Book> read(Request request) {
 		// TODO Auto-generated method stub
-		Book book = new Book();
-		List<Book> books = new ArrayList<Book>();
-		book.setName("GOT");
-		book.setAuthor("George R. R. Martin");
-		book.setLanguage("Português");
-		book.setPublishingCompany("Leya");
-		book.setSynopsis("The night is dark and full of terros.");
-		books.add(book);
-		book = new Book();
-		book.setName("Senhor dos Anéis");
-		book.setAuthor("J. R. R. Tolkien");
-		book.setLanguage("Português");
-		book.setPublishingCompany("Não sei");
-		book.setSynopsis("Teste");
-		books.add(book);
-		return books;
+		Query query = request.getQuery();
+		List<Book> list = books.read();
+		
+		if (query.containsKey("search")) {
+			String s = query.get("search");
+			list.stream().filter( (a) -> a.getAuthor().contains(s));
+		}
+		
+		return books.read();
 	}
 
 }
