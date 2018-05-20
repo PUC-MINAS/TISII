@@ -1,8 +1,10 @@
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +21,6 @@ public class Archive<T> {
 	public List<T> read() {
 		// TODO Auto-generated method stub
 		JSONArray array = null;
-		List<T> books = new ArrayList<T>();
 		try {
 			FileInputStream arq = new FileInputStream(this.getPath());
 			InputStreamReader input = new InputStreamReader(arq);
@@ -31,24 +32,32 @@ public class Archive<T> {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		for (int i = 0; i < array.length(); i++) {
-			JSONObject obj = array.getJSONObject(i);
-			Book b = new Book(obj.getString("name"),
-							  obj.getString("publishingCompany"),
-							  obj.getString("language"),
-							  obj.getLong("isbn"),
-							  obj.getInt("genre"),
-							  obj.getString("synopsis"),
-							  obj.getString("author"));
-			books.add((T) b);
-		}
-		return books;
+		}		
+		return (List<T>) array.toList();
 	}
 
 	public String getPath() {
 		// TODO Auto-generated method stub
 		return this.path;
+	}
+
+	public boolean write(T obj) {
+		// TODO Auto-generated method stub
+		JSONArray array = new JSONArray();
+		List<T> list = this.read();
+		list.add(obj);
+		array.put(list);
+		try {
+			FileOutputStream arq = new FileOutputStream(this.getPath());
+			PrintWriter pr = new PrintWriter(arq);
+			array.write(pr);						
+			pr.close();
+			arq.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 	
 }
