@@ -16,6 +16,14 @@ function createBook (){
 			message: "Cadastro realizado com sucesso",
 			size: "small"
 		});
+		form.elements.name.value = "";
+		form.elements.author.value = "";
+		form.elements.isbn.value = "";
+		form.elements.language.value = "";
+		form.elements.publishingCompany.value = "";
+		form.elements.synopsis.value = "";
+		form.elements.genre.value = "";
+		
 	}		
 	).fail(function(){
 		bootbox.alert({
