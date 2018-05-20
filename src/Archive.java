@@ -11,13 +11,21 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/* Author: Ravi Assis
+ * Date: 20/05/2018
+ * Description: This class can read or write any collection of data of type List<T>
+ * */
+
 public class Archive<T> {
-	private String path;
+	private String path; //directory name
 	
+	/*Constructer*/
 	public Archive(String path){
 		this.path = path;
 	}
 	
+	//read()
+	// this method read a json file and return the data as a List<T>
 	public List<T> read() {
 		// TODO Auto-generated method stub
 		JSONArray array = null;
@@ -36,11 +44,15 @@ public class Archive<T> {
 		return (List<T>) array.toList();
 	}
 
+	//getPath()
+	//return the directory path of the object
 	public String getPath() {
 		// TODO Auto-generated method stub
 		return this.path;
 	}
 
+	//write(T obj)
+	// this method receive as parameter a T Object and put him in the json file.
 	public boolean write(T obj) {
 		// TODO Auto-generated method stub
 		JSONArray array = new JSONArray();
