@@ -13,9 +13,14 @@ public class ServiceBook {
 	public static boolean create(Request request) {
 		// TODO Auto-generated method stub
 		Query query = request.getQuery();
-		String name = query.get("name");
 		
-		return true;
+		Book b = new Book();
+		b.setName("Teste");
+		b.setPublishingCompany("Teste");
+		b.setAuthor("Teste");
+		b.setSynopsis("Teste");		
+		
+		return books.write(b);
 	}
 
 	public static List<Book> read(Request request) {
@@ -23,12 +28,16 @@ public class ServiceBook {
 		Query query = request.getQuery();
 		List<Book> list = books.read();
 		
+		/*
 		if (query.containsKey("search")) {
 			String s = query.get("search");
-			list.stream().filter( (a) -> a.getAuthor().contains(s));
-		}
+			list.stream()
+				.filter( (a) -> a.getAuthor().contains(s) ||
+								a.getName().contains(s) ||
+								a.getPublishingCompany().contains(s) );
+		}*/
 		
-		return books.read();
+		return list;
 	}
 
 }
