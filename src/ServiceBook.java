@@ -26,16 +26,7 @@ public class ServiceBook {
 	public static List<Book> read(Request request) {
 		// TODO Auto-generated method stub
 		Query query = request.getQuery();
-		List<Book> list = books.read();
-		
-		/*
-		if (query.containsKey("search")) {
-			String s = query.get("search");
-			list.stream()
-				.filter( (a) -> a.getAuthor().contains(s) ||
-								a.getName().contains(s) ||
-								a.getPublishingCompany().contains(s) );
-		}*/
+		List<Book> list = books.read();		
 		
 		return list;
 	}
