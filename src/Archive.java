@@ -36,11 +36,16 @@ public class Archive<T> {
 			array = new JSONArray(br.readLine());				
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			array = new JSONArray();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+			array = new JSONArray();
 		}		
+		catch (Exception e) {
+			
+			array = new JSONArray();
+		}
 		return (List<T>) array.toList();
 	}
 
