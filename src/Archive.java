@@ -60,10 +60,10 @@ public class Archive<T> {
 	// this method receive as parameter a T Object and put him in the json file.
 	public boolean write(T obj) {
 		// TODO Auto-generated method stub
-		JSONArray array = new JSONArray();
 		List<T> list = this.read();
 		list.add(obj);
-		array.put(list);
+		JSONArray array = new JSONArray(list);
+		
 		try {
 			FileOutputStream arq = new FileOutputStream(this.getPath());
 			PrintWriter pr = new PrintWriter(arq);
