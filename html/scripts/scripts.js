@@ -60,3 +60,22 @@ function createExemplary(){
 		});
 	});
 }
+
+function fillSelectExemplary(){
+	$.ajax({
+		url: "http://127.0.0.1:781/services/book/read",
+		type: 'GET',
+		beforeSend: function(){
+
+		}
+	}).done(function(response){
+		console.log(response);
+		var options = "";
+		var books = response.books;
+		for (int i = 0; i < books.length; i++){
+			options += '<option value="'+books[i].name+'">' + books[i].name + '</option>';
+		}
+		console.log(options);
+
+	});
+}
