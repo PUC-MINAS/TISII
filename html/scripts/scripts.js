@@ -71,11 +71,14 @@ function fillSelectExemplary(){
 	}).done(function(response){
 		console.log(response);
 		var options = "";
+		var op;
+		var select = $('#selectBooks')[0];
 		var books = response.books;
-		for (int i = 0; i < books.length; i++){
-			options += '<option value="'+books[i].name+'">' + books[i].name + '</option>';
+		for (var i = 0; i < books.length; i++){
+			op = document.createElement('option');
+			op.setAttribute('value', books[i].name);
+			op.innerHTML = books[i].name;
+			select.appendChild(op);
 		}
-		console.log(options);
-
 	});
 }
