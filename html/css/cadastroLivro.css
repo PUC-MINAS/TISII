@@ -12,6 +12,6 @@
     max-height: 100%;
 }
 
-.painel button{
-	margin: 0 45%;
+#step2, #step3, #btnBack {
+	display: none;
 }
