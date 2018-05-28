@@ -1,11 +1,16 @@
 function createBook (){
-	var form = $('#formBook')[0];
+	var elements = $("#formBook")[0].elements;
 	$.ajax({
 		url : "http://127.0.0.1:781/services/book/create",
 	    type : 'POST',
     	data : {
-    		name: form.name.value
-    		
+    		name: elements.name.value,
+    		publishingCompany: elements.publishingCompany.value,
+    		language: elements.language.value,
+    		isbn: elements.isbn.value,
+    		genre: elements.genre.value,
+    		author: elements.author.value,
+    		synopsis: elements.synopsis.value
     	},
     	beforeSend : function(){
       		
@@ -29,14 +34,13 @@ function createBook (){
 
 function createExemplary(){
 	var form = $('#formExemplary')[0];
+	var formData = new FormData($("#formExemplary")[0]); 
 	$.ajax({
 		url : "http://127.0.0.1:781/services/exemplary/create",
 	    type : 'POST',
-    	data : {
-    		book: form.book.value,
-    		localization: form.localization.value,
-    		braile: form.braile.checked    		
-    	},
+    	processData: false,
+  		contentType: false,
+    	data : formData,
     	beforeSend : function(){
       		
     	}
