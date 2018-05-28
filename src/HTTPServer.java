@@ -81,6 +81,21 @@ public class HTTPServer implements Container{
 					sendResponse(Status.NOT_MODIFIED, response, msg.toString());
 				}
 			}
+			else if(path.startsWith("/services/genre/read")) {
+				msg.put("genres", ServiceGenre.readAll());
+				msg.put("status", Status.OK);
+				sendResponse(Status.OK, response, msg.toString());
+			}
+			else if(path.startsWith("/services/user/create")) {
+				if(ServiceUser.create(request)) {
+					msg.put("status", Status.CREATED);
+					sendResponse(Status.OK, response, msg.toString());
+				}
+				else {
+					msg.put("status", Status.NOT_MODIFIED);
+					sendResponse(Status.NOT_MODIFIED, response, msg.toString());
+				}
+			}
 			else {
 				this.notFind(response, path);
 			}

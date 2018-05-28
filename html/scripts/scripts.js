@@ -14,21 +14,15 @@ function createBook (){
 		
 		bootbox.alert({
 			message: "Cadastro realizado com sucesso",
-			size: "small"
-		});
-		form.elements.name.value = "";
-		form.elements.author.value = "";
-		form.elements.isbn.value = "";
-		form.elements.language.value = "";
-		form.elements.publishingCompany.value = "";
-		form.elements.synopsis.value = "";
-		form.elements.genre.value = "";
-		
+			size: "small",
+			callback: function(){location.reload();}
+		});		
 	}		
 	).fail(function(){
 		bootbox.alert({
 			message: "Não foi possível realizar o cadastro.",
-			size: "small"
+			size: "small",
+			callback: function(){location.reload();}
 		});
 	});
 }
@@ -50,7 +44,8 @@ function createExemplary(){
 		
 		bootbox.alert({
 			message: "Cadastro realizado com sucesso",
-			size: "small"
+			size: "small",
+			callback: function(){location.reload();}
 		});
 	}		
 	).fail(function(){
@@ -98,13 +93,16 @@ function createUser(){
 	}).done(function(response){
 		bootbox.alert({
 			message: "Cadastro realizado com sucesso",
-			size: "small"
+			size: "small",
+			callback: function(){location.reload();}
 		});
 	}).fail(function(){
 		bootbox.alert({
 			message: "Não foi possível realizar o cadastro.",
-			size: "small"
+			size: "small",
+			callback: function(){location.reload();}
 		});
+		
 	});
 }
 
