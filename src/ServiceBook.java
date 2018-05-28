@@ -15,14 +15,19 @@ public class ServiceBook {
 		
 		//Creates a book
 		Book b = new Book();
-		b.setName(request.getParameter("name"));
-		b.setPublishingCompany(request.getParameter("publishingCompany"));
-		b.setLanguage(request.getParameter("language"));
-		b.setIsbn(Long.parseLong(request.getParameter("isbn")));
-		b.setGenre(Integer.parseInt(request.getParameter("genre")));
-		b.setSynopsis(request.getParameter("synopsis"));
-		b.setAuthor(request.getParameter("Author"));
-		b.setSynopsis(request.getParameter("synopsis"));
+		try {
+			b.setName(request.getParameter("name"));
+			b.setPublishingCompany(request.getParameter("publishingCompany"));
+			b.setLanguage(request.getParameter("language"));
+			b.setIsbn(Long.parseLong(request.getParameter("isbn")));
+			b.setGenre(Integer.parseInt(request.getParameter("genre")));
+			b.setSynopsis(request.getParameter("synopsis"));
+			b.setAuthor(request.getParameter("Author"));
+			b.setSynopsis(request.getParameter("synopsis"));
+		}catch(NumberFormatException e) {
+			return false;
+		}
+		
 		
 		//Checks if the book already exists
 		List<Book> list = books.read();
