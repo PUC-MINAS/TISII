@@ -1,2 +1,13 @@
+/Archive.class
+/Book.class
+/Exemplary.class
 /Genre.class
+/HTTPServer.class
+/ServiceBook.class
+/ServiceExemplary.class
 /ServiceGenre.class
+/StatusExemplary.class
+/ServiceUser.class
+/TypeUser.class
+/StatusUser.class
+/Loan.class
