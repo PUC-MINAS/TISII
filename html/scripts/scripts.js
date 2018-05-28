@@ -51,7 +51,8 @@ function createExemplary(){
 	).fail(function(){
 		bootbox.alert({
 			message: "Não foi possível realizar o cadastro.",
-			size: "small"
+			size: "small",
+			callback: function(){location.reload();}
 		});
 	});
 }
