@@ -60,3 +60,10 @@ function createExemplary(){
 		});
 	});
 }
+
+//Funcao que gera div na tela de pesquisa para insercao dos dados do livro
+function generateDataDiv() {
+	var dataDiv = document.createElement("div");
+    dataDiv.classList.add("bookData");
+    document.getElementById("searchContainer").appendChild(dataDiv);
+}
