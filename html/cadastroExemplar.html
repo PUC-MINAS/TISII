@@ -24,7 +24,7 @@
     </style>
   </head>
 
-  <body>
+  <body onload="fillSelectExemplary()">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark standart">
@@ -66,12 +66,8 @@
     	<form id="formExemplary">
     		<div class="form-group">
     			<label for="book">Selecione o Livro</label>
-    			<select class="form-control" name="book">
-    				<option value="1">Livro1</option>
-    				<option value="2">Livro2</option>
-    				<option value="3">Livro3</option>
-    				<option value="4">Livro4</option>
-    				<option value="5">Livro5</option>
+    			<select class="form-control" name="book" id="selectBooks">
+    				<option></option>
     			</select>
     		</div>
     		<div class="form-group">

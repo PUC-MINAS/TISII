@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,7 +14,7 @@ import org.json.JSONObject;
 
 /* Author: Ravi Assis
  * Date: 20/05/2018
- * Description: This class can read or write any collection of data of type List<T>
+ * Description: This class can read or write any collection of data of the type List<T>
  * */
 
 public class Archive<T> {
@@ -22,12 +23,23 @@ public class Archive<T> {
 	/*Constructer*/
 	public Archive(String path){
 		this.path = path;
+		File file = new File(path);
+		if( !file.exists() ) {
+			FileOutputStream arq;
+			try {
+				arq = new FileOutputStream(this.getPath());
+				arq.close();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	//read()
 	// this method read a json file and return the data as a List<T>
 	public List<T> read() {
-		// TODO Auto-generated method stub
 		JSONArray array = null;
 		try {
 			FileInputStream arq = new FileInputStream(this.getPath());
@@ -36,11 +48,16 @@ public class Archive<T> {
 			array = new JSONArray(br.readLine());				
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			array = new JSONArray();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+			array = new JSONArray();
 		}		
+		catch (Exception e) {
+			
+			array = new JSONArray();
+		}
 		return (List<T>) array.toList();
 	}
 
@@ -55,10 +72,10 @@ public class Archive<T> {
 	// this method receive as parameter a T Object and put him in the json file.
 	public boolean write(T obj) {
 		// TODO Auto-generated method stub
-		JSONArray array = new JSONArray();
 		List<T> list = this.read();
 		list.add(obj);
-		array.put(list);
+		JSONArray array = new JSONArray(list);
+		
 		try {
 			FileOutputStream arq = new FileOutputStream(this.getPath());
 			PrintWriter pr = new PrintWriter(arq);

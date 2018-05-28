@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Ninive</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/full.css" rel="stylesheet">
+    <link href="css/ninive.css" rel="stylesheet">
+    <link href="css/cadastroLivro.css" rel="stylesheet">
+    <style>
+      body{
+        background-image: url("images/stacks.jpg");
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark standart">
+      <div class="container">
+        <a class="navbar-brand" href="#">Ninive</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home
+                <!--<span class="sr-only">(current)</span>-->
+              </a>
+            </li>
+            <!--
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            -->
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLogin">LogIn</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    
+    <div class="container painel" >
+    	<div class="row">
+    		<div class="col-md-12">
+    			<h1>Cadastro de Usuário</h1>
+    			<hr>
+    		</div>		
+    	</div>
+
+      <div class="row">
+        <div class="col-md-3">
+          Etapa <span id="steps">1 de 3</span>
+        </div>
+      </div>
+
+    	<form id="formUser">
+        <input id="inputStep" type="hidden" name="step" value="1">
+        <!-- Step 1 -->
+        <div id="step1">
+          
+      		<div class="row">
+      			<div class="offset-md-3 col-md-6">
+      				<div class="form-group">
+  		    			<label for="username">Username</label>
+  		    			<input type="text" name="username" class="form-control">
+  		    		</div>
+      			</div>
+      		</div>
+
+          <div class="row">
+            <div class="offset-md-3 col-md-6">
+              <div class="form-group">
+                <label for="type">Tipo</label>
+                <select class="form-control" name="type">
+                  <option></option>
+                  <option value="1">Leitor</option>
+                  <option value="2">Bibliotecario</option>
+                </select>
+              </div> 
+            </div>
+          </div>
+
+      		<div class="row">
+      			<div class="offset-md-3 col-md-6">
+      				<div class="form-group">
+  		    			<label for="email">Email</label>
+  		    			<input type="text" name="email" class="form-control">
+  		    		</div>
+      			</div>
+      		</div>
+
+          <div class="row">
+            <div class="offset-md-3 col-md-6">
+              <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" name="password" class="form-control">  
+              </div>
+            </div>  
+          </div>
+
+        </div>
+
+        <!-- Step 2 -->
+
+        <div id="step2">
+          
+        
+          <div class="row">
+            <div class="offset-md-3 col-md-6">
+              <div class="form-group">
+                <label for="firstName">Nome</label>
+                <input type="text" name="firstName" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="offset-md-3 col-md-6">
+              <div class="form-group">
+                <label for="lastName">Sobrenome</label>
+                <input type="text" name="lastName" class="form-control">
+              </div>
+            </div>
+          </div>    
+
+          <div class="row">
+            <div class="offset-md-3 col-md-6">
+              <div class="form-group">
+                <label for="birth">Data de Nascimento</label>
+                <input type="date" name="birth" class="form-control">
+              </div>
+            </div>
+          </div>  
+
+          <div class="row">
+            <div class="offset-md-3 col-md-6">
+              <div class="form-group">
+                <label for="docIdentity">Identidade</label>
+                <input type="text" name="docIdentity" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="offset-md-3 col-md-6">
+              <div class="form-group">
+                <label for="docCpf">CPF</label>
+                <input type="text" name="docCpf" class="form-control">
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="offset-md-3 col-md-6">
+              <div class="form-group">
+                <label for="phone">Telefone</label>
+                <input type="text" name="phone" class="form-control">
+              </div>
+            </div>
+          </div>   
+
+          <div class="row">
+            <div class="offset-md-3 col-md-6">
+              <div class="form-group">
+                <label for="cel">Celular</label>
+                <input type="text" name="cel" class="form-control">
+              </div>
+            </div>
+          </div>
+
+        </div>     
+
+        <!-- Step 3 -->
+
+        <div id="step3" >          
+          <div class="row">
+            <div class="offset-md-3 col-md-6">
+              <div class="form-group">
+                <label for="address">Endereço</label>
+                <input type="text" name="address" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="offset-md-3 col-md-6">
+              <div class="form-group">
+                <label for="number">Número</label>
+                <input type="number" name="number" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="offset-md-3 col-md-6">
+              <div class="form-group">
+                <label for="complement">Complemento</label>
+                <input type="text" name="complement" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="offset-md-3 col-md-6">
+              <div class="form-group">
+                <label for="cep">CEP</label>
+                <input type="text" name="cep" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="offset-md-3 col-md-6">
+              <div class="form-group">
+                <label for="city">Cidade</label>
+                <input type="text" name="city" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="offset-md-3 col-md-6">
+              <div class="form-group">
+                <label for="state">Estado</label>
+                <input type="text" name="state" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2">
+            <div class="form-group">
+              <button id="btnBack" type="button" class="btn btn-primary btn-block" onclick="backUserForm();">Voltar</button>
+            </div>
+          </div>
+          <div class="offset-md-8 col-md-2">
+            <div class="form-group">
+              <button id="btnProx" type="button" class="btn btn-primary btn-block" onclick="nextUserForm();">Próximo</button>
+            </div>            
+          </div>
+        </div>	
+    	</form>      
+    </div>
+
+    
+    <!-- Modal -->
+    <div id="modalLogin" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal header-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Login</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          
+          <!-- Modal Body -->
+          <div class="modal-body">
+              <form action="">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input placeholder="Email" type="email" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                  <label for="pwd">Senha</label>
+                  <input placeholder="Senha" type="password" class="form-control" id="pwd">
+                </div>
+                <div class="checkbox">
+                  <label display="block"><input type="checkbox"> Lembre se de mim <a href="" text-align="right">Ainda não possuo conta</a></label>
+                </div>
+                <button type="submit" class="btn btn-default">Login</button>
+              </form>
+          </div>
+
+          <!-- Modal Footer
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-default" data-dismiss="modal">Login</button>
+          </div>
+          -->
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="scripts/scripts.js"></script>	
+    <script type="text/javascript" src="scripts/bootbox.min.js"></script>	
+
+  </body>
+
+</html>

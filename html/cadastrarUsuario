@@ -59,16 +59,16 @@
     <div class="container painel" >
     	<div class="row">
     		<div class="col-md-12">
-    			<h1>Cadastrar Livro</h1>
+    			<h1>Cadastrar Usuário</h1>
     			<hr>
     		</div>		
     	</div>
-    	<form id="formBook">
+    	<form id="formUser">
     		<div class="row">
     			<div class="col-md-12">
     				<div class="form-group">
-		    			<label for="name">Nome do Livro</label>
-		    			<input type="text" name="name" class="form-control">
+		    			<label for="username">Username</label>
+		    			<input type="text" name="username" class="form-control">
 		    		</div>
     			</div>
     		</div>
@@ -76,22 +76,26 @@
     		<div class="row">
     			<div class="col-md-12">
     				<div class="form-group">
-		    			<label for="publishingCompany">Editora</label>
-		    			<input type="text" name="publishingCompany" class="form-control">
+		    			<label for="email">Email</label>
+		    			<input type="text" name="email" class="form-control">
 		    		</div>
     			</div>
     		</div>
     		<div class="row">
     			<div class="col-md-6">
     				<div class="form-group">
-		    			<label for="language">Idioma</label>
-		    			<input type="text" name="language" class="form-control">	
+		    			<label for="type">Tipo</label>
+		    			<select class="form-control" name="type">
+                <option></option>
+                <option value="1">Leitor</option>
+                <option value="2">Bibliotecario</option>
+              </select> 	
 		    		</div>
     			</div>
     			<div class="col-md-6">
     				<div class="form-group">
-		    			<label for="isbn">ISBN</label>
-		    			<input type="text" name="isbn" class="form-control">	
+		    			<label for="password">Senha</label>
+		    			<input type="password" name="password" class="form-control">	
 		    		</div>
     			</div>
     		</div>
@@ -126,6 +130,7 @@
     	</form>      
     </div>
 
+    
     <!-- Modal -->
     <div id="modalLogin" class="modal fade" role="dialog">
       <div class="modal-dialog">

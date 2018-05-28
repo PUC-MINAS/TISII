@@ -11,32 +11,45 @@ public class ServiceBook {
 	private static Archive<Book> books = new Archive<Book>("Archives/books.json");
 
 	public static boolean create(Request request) {
-		// TODO Auto-generated method stub
 		Query query = request.getQuery();
 		
+		//Creates a book
 		Book b = new Book();
-		b.setName("Teste");
-		b.setPublishingCompany("Teste");
-		b.setAuthor("Teste");
-		b.setSynopsis("Teste");		
+		try {
+			b.setName(request.getParameter("name"));
+			b.setPublishingCompany(request.getParameter("publishingCompany"));
+			b.setLanguage(request.getParameter("language"));
+			b.setIsbn(Long.parseLong(request.getParameter("isbn")));
+			b.setGenre(Integer.parseInt(request.getParameter("genre")));
+			b.setSynopsis(request.getParameter("synopsis"));
+			b.setAuthor(request.getParameter("Author"));
+			b.setSynopsis(request.getParameter("synopsis"));
+		}catch(NumberFormatException e) {
+			return false;
+		}
 		
-		return books.write(b);
+		
+		//Checks if the book already exists
+		List<Book> list = books.read();
+		boolean found = false;
+		for(int i=0;i<list.size() && !found;i++)
+			if(b.equals(i))
+				found=true;
+		
+		//if book doesn't exists, creates a book
+		boolean created=false;
+		if(!found) {
+			books.write(b);
+			created=true;
+		}
+			
+		return created;
 	}
 
 	public static List<Book> read(Request request) {
-		// TODO Auto-generated method stub
 		Query query = request.getQuery();
 		List<Book> list = books.read();
-		
-		/*
-		if (query.containsKey("search")) {
-			String s = query.get("search");
-			list.stream()
-				.filter( (a) -> a.getAuthor().contains(s) ||
-								a.getName().contains(s) ||
-								a.getPublishingCompany().contains(s) );
-		}*/
-		
+
 		return list;
 	}
 
