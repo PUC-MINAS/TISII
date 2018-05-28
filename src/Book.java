@@ -1,4 +1,3 @@
-
 public class Book {
 	private String name;
 	private String publishingCompany;
@@ -49,17 +48,17 @@ public class Book {
 		this.language = language;
 	}
 	
-	private long getIsbn() {
+	public long getIsbn() {
 		return this.isbn;
 	}
-	private void setIsbn(long isbn) {
+	public void setIsbn(long isbn) {
 		this.isbn = isbn;
 	}
 	
-	private int getGenre() {
+	public int getGenre() {
 		return this.genre;
 	}
-	private void setGenre(int genre) {
+	public void setGenre(int genre) {
 		this.genre = genre;
 	}
 	

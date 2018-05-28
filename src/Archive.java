@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 /* Author: Ravi Assis
  * Date: 20/05/2018
- * Description: This class can read or write any collection of data of type List<T>
+ * Description: This class can read or write any collection of data of the type List<T>
  * */
 
 public class Archive<T> {
@@ -30,10 +30,8 @@ public class Archive<T> {
 				arq = new FileOutputStream(this.getPath());
 				arq.close();
 			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -42,7 +40,6 @@ public class Archive<T> {
 	//read()
 	// this method read a json file and return the data as a List<T>
 	public List<T> read() {
-		// TODO Auto-generated method stub
 		JSONArray array = null;
 		try {
 			FileInputStream arq = new FileInputStream(this.getPath());

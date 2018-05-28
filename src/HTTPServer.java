@@ -3,7 +3,6 @@ import java.io.PrintStream;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.net.URI;
-
 import org.json.JSONObject;
 import org.simpleframework.http.Query;
 import org.simpleframework.http.Request;
@@ -14,10 +13,10 @@ import org.simpleframework.http.core.ContainerSocketProcessor;
 import org.simpleframework.transport.connect.Connection;
 import org.simpleframework.transport.connect.SocketConnection;
 
+
 public class HTTPServer implements Container{
 
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
 		int porta = 781;
 
 		// Configura uma conexão soquete para o servidor HTTP.
@@ -28,7 +27,7 @@ public class HTTPServer implements Container{
 		conexao.connect(endereco);
 		
 		//Testa a conexão abrindo o navegador padrão.
-		Desktop.getDesktop().browse(new URI("http://127.0.0.1:" + porta));
+//		Desktop.getDesktop().browse(new URI("http://127.0.0.1:" + porta));
 
 		System.out.println("Tecle ENTER para interromper o servidor...");
 		System.in.read();
@@ -39,15 +38,15 @@ public class HTTPServer implements Container{
 
 	@Override
 	public void handle(Request request, Response response) {
-		// TODO Auto-generated method stub
 		try {
 			String path = request.getPath().getPath();
 			String method = request.getMethod();
 			JSONObject msg = new JSONObject();
 			
 			if(path.startsWith("/services/book/create")&&method.compareToIgnoreCase("POST")==0){
-				// http://127.0.0.1:781/services/book/create		
+				// http://127.0.0.1:781/services/book/create
 				if(ServiceBook.create(request)) {
+					request.toString();
 					msg.put("status", Status.CREATED);
 					sendResponse(Status.CREATED, response, msg.toString());
 				}
