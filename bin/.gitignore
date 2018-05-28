@@ -8,3 +8,6 @@
 /ServiceGenre.class
 /StatusExemplary.class
 /ServiceUser.class
+/TypeUser.class
+/StatusUser.class
+/Loan.class
