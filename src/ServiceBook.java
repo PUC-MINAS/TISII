@@ -46,11 +46,26 @@ public class ServiceBook {
 		return created;
 	}
 
-	public static List<Book> read(Request request) {
-		Query query = request.getQuery();
+	public static List<Book> read(Request resquest) {
 		List<Book> list = books.read();
 
 		return list;
+	}
+
+	public static Book search(String nameBook) {
+		// TODO Auto-generated method stub
+		List<Book> list = readAll();
+		
+		for (Object e : list) {
+			if( ((Book) e).getName().compareToIgnoreCase(nameBook) == 0) return (Book)e;
+		}
+		
+		return null;
+	}
+
+	private static List<Book> readAll() {
+		// TODO Auto-generated method stub
+		return books.read();
 	}
 
 }
