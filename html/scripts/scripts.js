@@ -33,14 +33,16 @@ function createBook (){
 }
 
 function createExemplary(){
-	var form = $('#formExemplary')[0];
-	var formData = new FormData($("#formExemplary")[0]); 
+	var elements = $("#formExemplary")[0].elements; 
 	$.ajax({
 		url : "http://127.0.0.1:781/services/exemplary/create",
 	    type : 'POST',
-    	processData: false,
-  		contentType: false,
-    	data : formData,
+    	data : {
+    		nameBook: elements.book.value,
+    		exemplaryCode: elements.exemplaryCode.value,
+    		localization: elements.localization.value,
+    		braile: elements.braile.checked
+    	},
     	beforeSend : function(){
       		
     	}
