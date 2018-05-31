@@ -11,19 +11,22 @@ public class ServiceBook {
 	private static Archive<Book> books = new Archive<Book>("Archives/books.json");
 
 	//Cheks if the book exists, if not creates and return true, if does return false
-	public static boolean create(Request request) {
-//		Query query = request.getQuery();
-		
+	public static boolean create(Request request) {		
 		//Creates a book
 		Book b = new Book();
-		b.setName(request.getParameter("name"));
-		b.setPublishingCompany(request.getParameter("publishingCompany"));
-		b.setLanguage(request.getParameter("language"));
-		b.setIsbn(Long.parseLong(request.getParameter("isbn")));
-		b.setGenre(Integer.parseInt(request.getParameter("genre")));
-		b.setSynopsis(request.getParameter("synopsis"));
-		b.setAuthor(request.getParameter("Author"));
-		b.setSynopsis(request.getParameter("synopsis"));
+		try {
+			b.setName(request.getParameter("name"));
+			b.setPublishingCompany(request.getParameter("publishingCompany"));
+			b.setLanguage(request.getParameter("language"));
+			b.setIsbn(Long.parseLong(request.getParameter("isbn")));
+			b.setGenre(Integer.parseInt(request.getParameter("genre")));
+			b.setSynopsis(request.getParameter("synopsis"));
+			b.setAuthor(request.getParameter("Author"));
+			b.setSynopsis(request.getParameter("synopsis"));
+		}catch(NumberFormatException e) {
+			return false;
+		}
+		
 		
 		//Checks if the book already exists
 		List<Book> list = books.read();
@@ -40,8 +43,7 @@ public class ServiceBook {
 	}
 
 	//returns a list of Books
-	public static List<Book> read(Request request) {
-//		Query query = request.getQuery();
+	public static List<Book> read(Request resquest) {
 		List<Book> list = books.read();
 		return list;
 	}
@@ -71,5 +73,20 @@ public class ServiceBook {
 		}
 			
 		return deleted;
+	}
+
+	public static Book search(String nameBook) {
+		// TODO Auto-generated method stub
+		List<Book> list = readAll();
+		
+		for (Object e : list) {
+			if( ((Book) e).getName().compareToIgnoreCase(nameBook) == 0) return (Book)e;
+		}
+		
+		return null;
+	}
+
+	private static List<Book> readAll() {
+		return books.read();
 	}
 }
