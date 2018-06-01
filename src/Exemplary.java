@@ -6,10 +6,10 @@ public class Exemplary {
 	private Book book;
 	private String localization;
 	
-	public Exemplary(int exemplaryCode, boolean braile, int status, Book book, String localization) {
+	public Exemplary(int exemplaryCode, boolean braile, Book book, String localization) {
 		this.exemplaryCode = exemplaryCode;
 		this.braile = braile;
-		this.status = status;
+		this.status = StatusExemplary.AVAILABEL;
 		this.book = book;
 		this.localization = localization;
 	}
@@ -56,4 +56,13 @@ public class Exemplary {
 	public void setLocalization(String localization) {
 		this.localization = localization;
 	}
+
+	@Override
+	public boolean equals(Object arg0) {
+		// TODO Auto-generated method stub
+		Exemplary ex = (Exemplary) arg0;
+		return ex.getExemplaryCode() == this.getExemplaryCode();
+	}
+	
+	
 }

@@ -38,7 +38,7 @@ function createExemplary(){
 		url : "http://127.0.0.1:781/services/exemplary/create",
 	    type : 'POST',
     	data : {
-    		nameBook: elements.book.value,
+    		isbnBook: elements.book.value,
     		exemplaryCode: elements.exemplaryCode.value,
     		localization: elements.localization.value,
     		braile: elements.braile.checked
@@ -78,7 +78,7 @@ function fillSelectExemplary(){
 		var books = response.books;
 		for (var i = 0; i < books.length; i++){
 			op = document.createElement('option');
-			op.setAttribute('value', books[i].name);
+			op.setAttribute('value', books[i].isbn);
 			op.innerHTML = books[i].name;
 			select.appendChild(op);
 		}

@@ -39,8 +39,11 @@ public class Archive<T> {
 	
 	//read()
 	// this method read a json file and return the data as a List<T>
+	/*refatoring*/
 	public List<T> read() {
 		JSONArray array = null;
+		JSONObject obj = null;
+		List<T> list = new ArrayList<T>();
 		try {
 			FileInputStream arq = new FileInputStream(this.getPath());
 			InputStreamReader input = new InputStreamReader(arq);
@@ -58,7 +61,13 @@ public class Archive<T> {
 			
 			array = new JSONArray();
 		}
-		return (List<T>) array.toList();
+		
+		for (int i = 0; i < array.length(); i++) {
+			obj = array.getJSONObject(i);
+			list.add((T) obj);
+		}	
+		
+		return list;
 	}
 
 	//getPath()
