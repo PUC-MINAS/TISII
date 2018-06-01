@@ -27,54 +27,65 @@ public class Book {
 		this.author = null;
 	}
 
+	public boolean equals(Book b) {
+		if(this.isbn==b.getIsbn())
+				return true;
+		return false;
+	}
+	
 	public String getName() {
 		return this.name;
 	}
-	public void setName(String name) {
+	public Book setName(String name) {
 		this.name = name;
+		return this;
 	}
 	
 	public String getPublishingCompany() {
 		return this.publishingCompany;
 	}
-	public void setPublishingCompany(String publishingCompany) {
+	public Book setPublishingCompany(String publishingCompany) {
 		this.publishingCompany = publishingCompany;
+		return this;
 	}
 	
 	public String getLanguage() {
 		return this.language;
 	}
-	public void setLanguage(String language) {
+	public Book setLanguage(String language) {
 		this.language = language;
+		return this;
 	}
 	
 	public long getIsbn() {
 		return this.isbn;
 	}
-	public void setIsbn(long isbn) {
+	public Book setIsbn(long isbn) {
 		this.isbn = isbn;
+		return this;
 	}
 	
 	public int getGenre() {
 		return this.genre;
 	}
-	public void setGenre(int genre) {
+	public Book setGenre(int genre) {
 		this.genre = genre;
+		return this;
 	}
 	
 	public String getSynopsis() {
 		return this.synopsis;
 	}
-	public void setSynopsis(String synopsis) {
+	public Book setSynopsis(String synopsis) {
 		this.synopsis = synopsis;
+		return this;
 	}
 	
 	public String getAuthor() {
 		return this.author;
 	}
-	public void setAuthor(String author) {
+	public Book setAuthor(String author) {
 		this.author = author;
+		return this;
 	}
-	
-
 }
