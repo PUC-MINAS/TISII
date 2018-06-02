@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONObject;
 import org.simpleframework.http.Request;
 
 public class ServiceExemplary {
@@ -14,7 +16,7 @@ public class ServiceExemplary {
 		String loc = request.getParameter("localization");
 		boolean braile = Boolean.parseBoolean(request.getParameter("braile"));
 		Book book = ServiceBook.search(isbnBook);
-		List<Exemplary> list = exemplaries.read();
+		List<Exemplary> list = readAll();
 		
 		if(book != null) {
 			Exemplary ex = new Exemplary(exemplaryCode, braile, book, loc );
@@ -30,5 +32,20 @@ public class ServiceExemplary {
 		
 		return false;
 	}
+	
+	//returns a list of Exemplaries contends all Exemplaries
+    private static List<Exemplary> readAll() {
+    	List<JSONObject> listJSON = exemplaries.read();
+		List<Exemplary> list = new ArrayList<Exemplary>();
+		
+		for (JSONObject j : listJSON) {
+			Exemplary b = new Exemplary();
+			b.fromJSONObject(j);
+			list.add(b);
+		}
+		
+		
+		return list;
+    } 
 
 }

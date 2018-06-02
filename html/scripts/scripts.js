@@ -16,12 +16,21 @@ function createBook (){
       		
     	}
 	}).done(function(response){
-		
-		bootbox.alert({
-			message: "Cadastro realizado com sucesso",
-			size: "small",
-			callback: function(){location.reload();}
-		});		
+		if (response.status == "OK"){
+			bootbox.alert({
+				message: "Cadastro realizado com sucesso",
+				size: "small",
+				callback: function(){location.reload();}
+			});		
+		}
+		else {
+			bootbox.alert({
+				message: "Não foi possível realizar o cadastro.",
+				size: "small",
+				callback: function(){location.reload();}
+			});
+		}
+			
 	}		
 	).fail(function(){
 		bootbox.alert({

@@ -1,5 +1,6 @@
+import org.json.JSONObject;
 
-public interface JSONInterface<T> {
-	public void toJSONObject();
-	public T fromJSONObject();
+public interface JSONInterface {
+	public JSONObject toJSONObject();
+	public void fromJSONObject(JSONObject o);
 }

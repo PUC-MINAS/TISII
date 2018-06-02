@@ -22,17 +22,17 @@ public class ServiceBook {
 		    b.setIsbn(Long.parseLong(request.getParameter("isbn")));
 		    b.setGenre(Integer.parseInt(request.getParameter("genre")));
 		    b.setSynopsis(request.getParameter("synopsis"));
-		    b.setAuthor(request.getParameter("Author"));
+		    b.setAuthor(request.getParameter("author"));
 		    b.setSynopsis(request.getParameter("synopsis"));
 		}catch(NumberFormatException e) {
 		    return false;
 		}
 
 		//Checks if the book already exists
-		List<Book> list = books.read();
+		List<Book> list = readAll();
 
 		//if book doesn't exists, creates a book
-		if(list.contains(b)) {
+		if(!list.contains(b)) {
 		    books.write(b);
 		    return true;
 		}
@@ -41,8 +41,7 @@ public class ServiceBook {
 
     //returns a list of Books
     public static List<Book> read(Request resquest) {
-		List<Book> list = books.read();
-		return list;
+		return readAll();
     }
 
     //Updates a Book
@@ -50,7 +49,7 @@ public class ServiceBook {
 		//Receives isbn from request and searches for it in the list
 		int index = getIndex(Long.parseLong(request.getParameter("isbnToUpdate")));		
 		if(index>-1) {
-		    List<Book> list = books.read();
+		    List<Book> list = readAll();
 		    list.get(index).setName(request.getParameter("name"))
 		    .setPublishingCompany(request.getParameter("publishingCompany"))
 		    .setLanguage(request.getParameter("language"))
@@ -68,7 +67,7 @@ public class ServiceBook {
     public static boolean delete(Request request){
 		//Receives isbn from request and searches for it in the list
 		int index = getIndex(Long.parseLong(request.getParameter("isbn")));
-		List<Book>list = books.read();
+		List<Book>list = readAll();
 	
 		//deletes the book
 		boolean deleted=false;
@@ -81,7 +80,7 @@ public class ServiceBook {
 
     //Returns index of a book. -1 if doesn't exists
     private static int getIndex(long isbn) {
-		List<Book> list = books.read();
+		List<Book> list = readAll();
 		int index = -1;
 		boolean found = false;
 		for(int i=0;i<list.size() && !found;i++)
@@ -104,7 +103,18 @@ public class ServiceBook {
 		return null;
     }
 
+    //returns a list of Books contends all books
     private static List<Book> readAll() {
-    	return books.read();
+    	List<JSONObject> listJSON = books.read();
+		List<Book> list = new ArrayList<Book>();
+		
+		for (JSONObject j : listJSON) {
+			Book b = new Book();
+			b.fromJSONObject(j);
+			list.add(b);
+		}
+		
+		
+		return list;
     }
 }
