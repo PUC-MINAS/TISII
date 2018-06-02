@@ -39,8 +39,11 @@ public class Archive<T> {
 	
 	//read()
 	// this method read a json file and return the data as a List<T>
-	public List<T> read() {
+	/*refatoring*/
+	public List<JSONObject> read() {
 		JSONArray array = null;
+		JSONObject obj = null;
+		List<JSONObject> list = new ArrayList<JSONObject>();
 		try {
 			FileInputStream arq = new FileInputStream(this.getPath());
 			InputStreamReader input = new InputStreamReader(arq);
@@ -55,10 +58,16 @@ public class Archive<T> {
 			array = new JSONArray();
 		}		
 		catch (Exception e) {
-			
+			e.printStackTrace();
 			array = new JSONArray();
 		}
-		return (List<T>) array.toList();
+		
+		for (int i = 0; i < array.length(); i++) {
+			obj = array.getJSONObject(i);
+			list.add( obj );
+		}	
+		
+		return list;
 	}
 
 	//getPath()
@@ -70,10 +79,10 @@ public class Archive<T> {
 
 	//write(T obj)
 	// this method receive as parameter a T Object and put him in the json file.
-	public boolean write(T obj) {
+	public boolean write(JSONInterface obj) {
 		// TODO Auto-generated method stub
-		List<T> list = this.read();
-		list.add(obj);
+		List<JSONObject> list = this.read();
+		list.add(obj.toJSONObject());
 		JSONArray array = new JSONArray(list);
 		
 		try {
