@@ -62,6 +62,10 @@ public class Exemplary implements JSONInterface{
 	public void setIsbnBook(int isbnBook) {
 		this.isbnBook = isbnBook;
 	}
+	public long getIsbnBook() {
+		// TODO Auto-generated method stub
+		return this.isbnBook;
+	}
 
 	@Override
 	public boolean equals(Object arg0) {
@@ -73,8 +77,14 @@ public class Exemplary implements JSONInterface{
 	@Override
 	public JSONObject toJSONObject() {
 		// TODO Auto-generated method stub
-		return new JSONObject(this);
-	}
+		JSONObject o = new JSONObject();
+		o.put("exemplaryCode", this.getExemplaryCode());
+		o.put("braile", this.getBraile());
+		o.put("status", this.getStatus());
+		o.put("isbnBook", this.getIsbnBook());
+		o.put("localization", this.getLocalization());
+		return o;
+	}	
 
 	@Override
 	public void fromJSONObject(JSONObject o) {
@@ -85,10 +95,7 @@ public class Exemplary implements JSONInterface{
 		this.setIsbnBook(o.getInt("isbnBook"));
 		this.setLocalization(o.getString("localization"));
 		
-		/*this part is under test*/
-		Book b = new Book();
-		b.fromJSONObject(o.getJSONObject("book"));
-		this.setBook(b);
+		this.setBook(ServiceBook.search(this.getIsbnBook()));
 	}
 	
 	
