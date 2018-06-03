@@ -52,6 +52,18 @@ public class ServiceExemplary {
 	public static List<Exemplary> read(Request request) {
 		// TODO Auto-generated method stub
 		return readAll();
+	}
+
+	/*not implemented yet*/
+	public static Exemplary search(int exemplaryCode) {
+		// TODO Auto-generated method stub
+		List<Exemplary> list = readAll();
+		
+		for (Exemplary e: list) {
+			if(e.getExemplaryCode() == exemplaryCode) return e;
+		}
+		
+		return null;
 	} 
 
 }
