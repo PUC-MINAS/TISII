@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.json.JSONObject;
@@ -46,6 +47,11 @@ public class ServiceExemplary {
 		
 		
 		return list;
-    } 
+    }
+
+	public static List<Exemplary> read(Request request) {
+		// TODO Auto-generated method stub
+		return readAll();
+	} 
 
 }
