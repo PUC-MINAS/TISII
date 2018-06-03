@@ -164,5 +164,11 @@ function backUserForm(){
 		inputStep.val('2');
 		steps.html("2 de 3");
 	}
+}
 
+//Funcao que gera div na tela de pesquisa para insercao dos dados do livro
+function generateDataDiv() {
+	var dataDiv = document.createElement("div");
+    dataDiv.classList.add("bookData");
+    document.getElementById("searchContainer").appendChild(dataDiv);
 }
