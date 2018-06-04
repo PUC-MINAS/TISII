@@ -55,6 +55,11 @@ public class HTTPServer implements Container{
 					sendResponse(Status.NOT_MODIFIED, response, msg.toString());
 				}	
 			}
+			else if(path.startsWith("/services/book/read")) {
+				msg.put("books", ServiceBook.read(request));
+				msg.put("status", Status.OK);
+				sendResponse(Status.OK, response, msg.toString());
+			}
 			else if(path.startsWith("/services/exemplary/create")) {
 				if(ServiceExemplary.create(request)) {
 					msg.put("status", Status.CREATED);
@@ -65,8 +70,8 @@ public class HTTPServer implements Container{
 					sendResponse(Status.NOT_MODIFIED, response, msg.toString());
 				}	
 			}
-			else if(path.startsWith("/services/book/read")) {
-				msg.put("books", ServiceBook.read(request));
+			else if(path.startsWith("/services/exemplary/read")) {
+				msg.put("exemplaries", ServiceExemplary.read(request));
 				msg.put("status", Status.OK);
 				sendResponse(Status.OK, response, msg.toString());
 			}

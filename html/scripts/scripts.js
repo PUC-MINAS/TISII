@@ -16,12 +16,21 @@ function createBook (){
       		
     	}
 	}).done(function(response){
-		
-		bootbox.alert({
-			message: "Cadastro realizado com sucesso",
-			size: "small",
-			callback: function(){location.reload();}
-		});		
+		if (response.status == "OK"){
+			bootbox.alert({
+				message: "Cadastro realizado com sucesso",
+				size: "small",
+				callback: function(){location.reload();}
+			});		
+		}
+		else {
+			bootbox.alert({
+				message: "Não foi possível realizar o cadastro.",
+				size: "small",
+				callback: function(){location.reload();}
+			});
+		}
+			
 	}		
 	).fail(function(){
 		bootbox.alert({
@@ -33,14 +42,16 @@ function createBook (){
 }
 
 function createExemplary(){
-	var form = $('#formExemplary')[0];
-	var formData = new FormData($("#formExemplary")[0]); 
+	var elements = $("#formExemplary")[0].elements; 
 	$.ajax({
 		url : "http://127.0.0.1:781/services/exemplary/create",
 	    type : 'POST',
-    	processData: false,
-  		contentType: false,
-    	data : formData,
+    	data : {
+    		isbnBook: elements.book.value,
+    		exemplaryCode: elements.exemplaryCode.value,
+    		localization: elements.localization.value,
+    		braile: elements.braile.checked
+    	},
     	beforeSend : function(){
       		
     	}
@@ -76,7 +87,7 @@ function fillSelectExemplary(){
 		var books = response.books;
 		for (var i = 0; i < books.length; i++){
 			op = document.createElement('option');
-			op.setAttribute('value', books[i].name);
+			op.setAttribute('value', books[i].isbn);
 			op.innerHTML = books[i].name;
 			select.appendChild(op);
 		}
