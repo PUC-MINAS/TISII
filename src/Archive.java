@@ -58,7 +58,7 @@ public class Archive<T> {
 			array = new JSONArray();
 		}		
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			array = new JSONArray();
 		}
 		
