@@ -16,7 +16,8 @@ function createBook (){
       		
     	}
 	}).done(function(response){
-		if (response.status == "OK"){
+		console.log(response);
+		if (response.status == "CREATED"){
 			bootbox.alert({
 				message: "Cadastro realizado com sucesso",
 				size: "small",

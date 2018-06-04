@@ -11,8 +11,15 @@ public class testeUser {
 		Archive<User> users = new Archive<User>("Archives/users.json");
 		List<JSONObject> listO;
 		List<User> list = new ArrayList<User>();
-		User u;
-		/*User nUser = new User(
+		List<Loan> loans = new ArrayList<Loan>();
+		List<Reserve> reserves = new ArrayList<Reserve>();
+		Book b = new Book("Livro1", "edit1", "port", 123, 1, "kkk", "author1");
+		Book a = new Book("Livro2", "edit2", "por2", 1234, 1, "kkk", "author2");
+		Exemplary ex1 = new Exemplary(123, false, a, "qwe");
+		Exemplary ex2 = new Exemplary(1234, false, b, "qwe");
+		loans.add(new Loan(ex1));
+		reserves.add(new Reserve(ex2));
+		User nUser = new User(
 								"usernameTeste2",
 								"teste2@teste.com",
 								"senha2",
@@ -31,12 +38,14 @@ public class testeUser {
 												)
 							);
 		
-		users.write(nUser);*/
+		nUser.setLoans(loans);
+		nUser.setReserves(reserves);
+		users.write(nUser);
 		
 		listO = users.read();
 		
 		for (JSONObject o: listO) {
-			u = new User();
+			User u = new User();
 			u.fromJSONObject(o);
 			list.add(u);
 		}
