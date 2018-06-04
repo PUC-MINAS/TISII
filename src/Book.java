@@ -1,4 +1,6 @@
-public class Book {
+import org.json.JSONObject;
+
+public class Book implements JSONInterface {
 	private String name;
 	private String publishingCompany;
 	private String language;
@@ -87,5 +89,25 @@ public class Book {
 	public Book setAuthor(String author) {
 		this.author = author;
 		return this;
+	}
+
+	@Override
+	public JSONObject toJSONObject() {
+		// TODO Auto-generated method stub
+		JSONObject o = new JSONObject(this);
+		
+		return o;
+	}
+
+	@Override
+	public void fromJSONObject(JSONObject o) {
+		// TODO Auto-generated method stub
+		this.setName(o.getString("name"));
+		this.setPublishingCompany(o.getString("publishingCompany"));
+		this.setLanguage(o.getString("language"));
+		this.setIsbn(o.getLong("isbn"));
+		this.setGenre(o.getInt("genre"));
+		this.setSynopsis(o.getString("synopsis"));
+		this.setAuthor(o.getString("author"));
 	}
 }

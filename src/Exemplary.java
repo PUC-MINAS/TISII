@@ -1,15 +1,18 @@
+import org.json.JSONObject;
 
-public class Exemplary {
+public class Exemplary implements JSONInterface{
 	private int exemplaryCode;
 	private boolean braile;
 	private int status;
+	private long isbnBook;
 	private Book book;
 	private String localization;
 	
-	public Exemplary(int exemplaryCode, boolean braile, int status, Book book, String localization) {
+	public Exemplary(int exemplaryCode, boolean braile, Book book, String localization) {
 		this.exemplaryCode = exemplaryCode;
 		this.braile = braile;
-		this.status = status;
+		this.status = StatusExemplary.AVAILABEL;
+		this.isbnBook = book.getIsbn();
 		this.book = book;
 		this.localization = localization;
 	}
@@ -56,4 +59,44 @@ public class Exemplary {
 	public void setLocalization(String localization) {
 		this.localization = localization;
 	}
+	public void setIsbnBook(int isbnBook) {
+		this.isbnBook = isbnBook;
+	}
+	public long getIsbnBook() {
+		// TODO Auto-generated method stub
+		return this.isbnBook;
+	}
+
+	@Override
+	public boolean equals(Object arg0) {
+		// TODO Auto-generated method stub
+		Exemplary ex = (Exemplary) arg0;
+		return ex.getExemplaryCode() == this.getExemplaryCode();
+	}
+
+	@Override
+	public JSONObject toJSONObject() {
+		// TODO Auto-generated method stub
+		JSONObject o = new JSONObject();
+		o.put("exemplaryCode", this.getExemplaryCode());
+		o.put("braile", this.getBraile());
+		o.put("status", this.getStatus());
+		o.put("isbnBook", this.getIsbnBook());
+		o.put("localization", this.getLocalization());
+		return o;
+	}	
+
+	@Override
+	public void fromJSONObject(JSONObject o) {
+		// TODO Auto-generated method stub
+		this.setExemplaryCode(o.getInt("exemplaryCode"));
+		this.setBraile(o.getBoolean("braile"));
+		this.setStatus(o.getInt("status"));
+		this.setIsbnBook(o.getInt("isbnBook"));
+		this.setLocalization(o.getString("localization"));
+		
+		this.setBook(ServiceBook.search(this.getIsbnBook()));
+	}
+	
+	
 }
