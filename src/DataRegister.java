@@ -1,16 +1,19 @@
+import java.time.LocalDate;
 
-public class DataRegister {
-	String firstName;
-	String lastName;
-	Adress adress;
-	String docIdentity;
-	String docCpf;
-	String phone;
-	String cel;
-	Date birth;
-	Date register;
+import org.json.JSONObject;
+
+public class DataRegister implements JSONInterface {
+	private String firstName;
+	private String lastName;
+	private Adress adress;
+	private String docIdentity;
+	private String docCpf;
+	private String phone;
+	private String cel;
+	private LocalDate birth;
+	private LocalDate register;
 	
-	public DataRegister(String firstName, String lastName, Adress adress, String docIdentity, String docCpf, String phone, String cel, Date birth, Date register) {
+	public DataRegister(String firstName, String lastName, String docIdentity, String docCpf, String phone, String cel, LocalDate birth, LocalDate register,  Adress adress) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.adress = adress;
@@ -20,6 +23,10 @@ public class DataRegister {
 		this.cel = cel;
 		this.birth = birth;
 		this.register = register;
+	}
+	
+	public DataRegister() {
+		
 	}
 
 	public String getFirstName() {
@@ -71,17 +78,49 @@ public class DataRegister {
 		this.cel = cel;
 	}
 
-	public Date getBirth() {
+	public LocalDate getBirth() {
 		return birth;
 	}
-	public void setBirth(Date birth) {
+	public void setBirth(LocalDate birth) {
 		this.birth = birth;
 	}
 
-	public Date getRegister() {
+	public LocalDate getRegister() {
 		return register;
 	}
-	public void setRegister(Date register) {
+	public void setRegister(LocalDate register) {
 		this.register = register;
+	}
+
+	@Override
+	public JSONObject toJSONObject() {
+		// TODO Auto-generated method stub
+		JSONObject o = new JSONObject();
+		o.put("firstName", this.getFirstName());
+		o.put("lastName", this.getLastName());
+		o.put("docIdentify", this.getDocIdentity());
+		o.put("docCpf", this.getDocCpf());
+		o.put("phone", this.getPhone());
+		o.put("cel", this.getCel());
+		o.put("birth", this.getBirth().toString());
+		o.put("register", this.getRegister());
+		o.put("adress", this.getAdress().toJSONObject());
+		return o;
+	}
+
+	@Override
+	public void fromJSONObject(JSONObject o) {
+		// TODO Auto-generated method stub
+		this.setFirstName(o.getString("firstName"));
+		this.setLastName(o.getString("lastName"));
+		this.setDocIdentity(o.getString("docIdentify"));
+		this.setDocCpf(o.getString("docCpf"));
+		this.setPhone(o.getString("phone"));
+		this.setCel(o.getString("cel"));
+		this.setBirth(LocalDate.parse(o.getString("birth")));
+		this.setRegister(LocalDate.parse(o.getString("register")));
+		Adress a = new Adress();
+		a.fromJSONObject(o.getJSONObject("adress"));
+		this.setAdress(a);
 	}
 }

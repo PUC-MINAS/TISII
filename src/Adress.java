@@ -1,11 +1,12 @@
+import org.json.JSONObject;
 
-public class Adress {
-	String adress;
-	String number;
-	String complement;
-	String cep;
-	String city;
-	String state;
+public class Adress implements JSONInterface {
+	private String adress;
+	private String number;
+	private String complement;
+	private String cep;
+	private String city;
+	private String state;
 	
 	public Adress(String adress, String number, String complement, String cep, String city, String state) {
 		this.adress = adress;
@@ -14,6 +15,10 @@ public class Adress {
 		this.cep = cep;
 		this.city = city;
 		this.state = state;
+	}
+	
+	public Adress() {
+		
 	}
 
 	public String getAdress() {
@@ -56,5 +61,29 @@ public class Adress {
 	}
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	@Override
+	public JSONObject toJSONObject() {
+		// TODO Auto-generated method stub
+		JSONObject o = new JSONObject();
+		o.put("adress", this.getAdress());
+		o.put("number", this.getNumber());
+		o.put("complement", this.getComplement());
+		o.put("cep", this.getCep());
+		o.put("city", this.getCity());
+		o.put("state", this.getState());
+		return o;
+	}
+
+	@Override
+	public void fromJSONObject(JSONObject o) {
+		// TODO Auto-generated method stub
+		this.setAdress(o.getString("adress"));
+		this.setNumber(o.getString("number"));
+		this.setComplement(o.getString("complement"));
+		this.setCep(o.getString("cep"));
+		this.setCity(o.getString("city"));
+		this.setState(o.getString("state"));
 	}
 }

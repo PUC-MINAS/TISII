@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONObject;
 import org.simpleframework.http.Query;
 import org.simpleframework.http.Request;
 
@@ -8,13 +10,22 @@ public class ServiceGenre {
 	
 	public static List<Genre> readAll() {
 		// TODO Auto-generated method stub
-		List<Genre> list = genres.read();		
+		
+		List<JSONObject> listJSON = genres.read();
+		List<Genre> list = new ArrayList<Genre>();
+		
+		for (JSONObject j : listJSON) {
+			Genre b = new Genre();
+			b.fromJSONObject(j);
+			list.add(b);
+		}
+		
 		
 		return list;
 	}
 	
 	public static Genre search(int id) {
-		List<Genre> list = genres.read();
+		List<Genre> list = readAll();
 		
 		for(Genre e : list) {
 			if (e.id == id) return e;
