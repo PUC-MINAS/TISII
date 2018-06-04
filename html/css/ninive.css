@@ -24,3 +24,16 @@ body{
     max-height: 100%;
     margin-top: 15%;
 }
+
+#searchContainer {
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.bookData {
+    padding: 10px;
+    margin: 10px;
+    background-color: blue;
+}
