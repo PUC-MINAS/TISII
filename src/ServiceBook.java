@@ -65,17 +65,18 @@ public class ServiceBook {
 
     //Cheks if a book exist, if not returns false, if does deletes and return true 
     public static boolean delete(Request request){
-		//Receives isbn from request and searches for it in the list
-		int index = getIndex(Long.parseLong(request.getParameter("isbn")));
-		List<Book>list = readAll();
-	
-		//deletes the book
-		boolean deleted=false;
-		if(index>=0) {
-		    list.remove(index);
-		    deleted=true;
-		}
-		return deleted;
+
+	//Receives isbn from request and searches for it in the list
+	int index = getIndex(Long.parseLong(request.getParameter("isbn")));
+	List<Book>list = books.read();
+
+	//Deletes the book
+	boolean deleted=false;
+	if(index>=0) {
+	    list.remove(index);
+	    deleted=true;
+	}
+	return deleted;
     }
 
     //Returns index of a book. -1 if doesn't exists

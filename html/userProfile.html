@@ -16,7 +16,6 @@
     <!-- Custom styles for this template -->
     <link href="css/full.css" rel="stylesheet">
     <link href="css/ninive.css" rel="stylesheet">
-    <link href="css/cadastroLivro.css" rel="stylesheet">
     <style>
       body{
         background-image: url("images/stacks.jpg");
@@ -35,19 +34,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home
-                <!--<span class="sr-only">(current)</span>-->
-              </a>
+                
+                <span type="submit" class="custom-form-label" for="Search"><input type="text" name="Search" class="form-control" placeholder="Search a book">Search</span>
             </li>
-            <!--
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="index.html">Home</a>
             </li>
-            -->
             <li class="nav-item">
-              <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLogin">LogIn</a>
+              <a class="nav-link" data-toggle="modal" data-target="#modalLogin">LogIn</a>
             </li>
           </ul>
         </div>
@@ -55,77 +50,30 @@
     </nav>
 
     <!-- Page Content -->
-    
-    <div class="container painel" >
-    	<div class="row">
-    		<div class="col-md-12">
-    			<h1>Cadastrar Livro</h1>
-    			<hr>
-    		</div>		
-    	</div>
-    	<form id="formBook">
-    		<div class="row">
-    			<div class="col-md-12">
-    				<div class="form-group">
-		    			<label for="name">Nome do Livro</label>
-		    			<input type="text" name="name" class="form-control">
-		    		</div>
-    			</div>
-    		</div>
-
-    		<div class="row">
-    			<div class="col-md-12">
-    				<div class="form-group">
-		    			<label for="publishingCompany">Editora</label>
-		    			<input type="text" name="publishingCompany" class="form-control">
-		    		</div>
-    			</div>
-    		</div>
-    		<div class="row">
-    			<div class="col-md-6">
-    				<div class="form-group">
-		    			<label for="language">Idioma</label>
-		    			<input type="text" name="language" class="form-control">	
-		    		</div>
-    			</div>
-    			<div class="col-md-6">
-    				<div class="form-group">
-		    			<label for="isbn">ISBN</label>
-		    			<input type="text" name="isbn" class="form-control">	
-		    		</div>
-    			</div>
-    		</div>
-
-    		
-    		<div class="row">
-    			<div class="col-md-6">
-    				<div class="form-group">
-		    			<label for="genre">Gênero</label>
-		    			<select class="form-control" name="genre">
-		    				<option></option>
-		    				<option value="1">Aventura</option>
-		    				<option value="2">Romance</option>
-		    			</select>	
-		    		</div>
-    			</div>
-    			<div class="col-md-6">
-    				<div class="form-group">
-		    			<label for="author">Autor</label>
-		    			<input type="text" name="author" class="form-control">	
-		    		</div>
-    			</div>
-    		</div>    		
-    		
-    		<div class="form-group">
-    			<label for="synopsis">Sinopse</label>
-    			<textarea class="form-control" name="synopsis"></textarea>	
-    		</div>
-    		<div class="form-group">
-    			<button type="button" class="btn btn-primary" onclick="createBook();">Cadastrar</button>
-    		</div>
-    	</form>      
+<!--
+    <div class="container" id="index">
+      <div class="row justify-content-center">
+        <h1 id="niniveslogan" class="col-4">نينوى</h1>
+      </div>
+      <div class="row align-items-start justify-content-center">
+        <div class="col-md-4">
+          <h1 id="ninivetitle">Ninive</h1>
+        </div>        
+      </div>
+      <div class="row align-self-end justify-content-center">
+        <div class="col-4">
+          <div class="input-group">
+            <input type="text" name="Search" class="form-control" placeholder="Search a book">
+            <span class="input-group-btn">
+              <button type="submit" name="Search" id="mc-embedded-subscribe" class="btn btn-secondary standart">Search</button>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
+-->
 
+    
     <!-- Modal -->
     <div id="modalLogin" class="modal fade" role="dialog">
       <div class="modal-dialog">
@@ -151,7 +99,7 @@
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="customCheck1">
                     <label class="custom-control-label" for="customCheck1">Lembrar de mim</label><br>
-                    <a href="">Não possuo conta</a>
+                    <button class="btn btn-link" href="">Não possuo conta</a>
                 </div>
                 <button type="submit" class="btn btn-default">Login</button>
               </form>
@@ -159,19 +107,16 @@
 
           <!-- Modal Footer
           <div class="modal-footer">
-            <button type="submit" class="btn btn-default" data-dismiss="modal">Login</button>
+            <button type="submit" class="btn btn-default">Login</button>
           </div>
           -->
         </div>
       </div>
     </div>
 
-
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="scripts/scripts.js"></script>	
-    <script type="text/javascript" src="scripts/bootbox.min.js"></script>	
 
   </body>
 
