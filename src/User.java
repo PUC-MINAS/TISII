@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class User implements JSONInterface {
@@ -7,8 +11,8 @@ public class User implements JSONInterface {
 	private int type;
 	private int status;
 	private DataRegister data;
-	private Loan[] loans;
-	private Reserve[] reserves;
+	private List<Loan> loans;
+	private List<Reserve> reserves;
 	
 	public User(String username, String email, String password, int type, int status, DataRegister data) {
 		this.username = username;
@@ -17,8 +21,8 @@ public class User implements JSONInterface {
 		this.type = type;
 		this.status = status;
 		this.data = data;
-		this.loans = new Loan[10];
-		this.reserves = new Reserve[10];
+		this.loans = new ArrayList<Loan>();
+		this.reserves = new ArrayList<Reserve>();
 	}
 	
 	public User() {
@@ -60,17 +64,17 @@ public class User implements JSONInterface {
 		this.status = status;
 	}
 
-	public Loan[] getLoans() {
+	public List<Loan> getLoans() {
 		return loans;
 	}
-	public void setLoans(Loan[] loans) {
+	public void setLoans(List<Loan> loans) {
 		this.loans = loans;
 	}
 
-	public Reserve[] getReserves() {
+	public List<Reserve> getReserves() {
 		return reserves;
 	}
-	public void setReserves(Reserve[] reserves) {
+	public void setReserves(List<Reserve> reserves) {
 		this.reserves = reserves;
 	}
 	
@@ -100,6 +104,8 @@ public class User implements JSONInterface {
 		o.put("type", this.getType());
 		o.put("status", this.getStatus());
 		o.put("data", this.getData().toJSONObject());
+		o.put("loans", this.getLoans());
+		o.put("reserves", this.getReserves());
 		return o;
 	}
 
@@ -114,5 +120,23 @@ public class User implements JSONInterface {
 		DataRegister d = new DataRegister();
 		d.fromJSONObject(o.getJSONObject("data"));
 		this.setData(d);
+		JSONArray arrayLoans = o.getJSONArray("loans");
+		JSONArray arrayReserve = o.getJSONArray("reserves");
+		JSONObject ob;
+		Loan l;
+		Reserve r;
+		List<Loan> loans = new ArrayList<Loan>();
+		List<Reserve> reserves = new ArrayList<Reserve>();
+		for(int i = 0; i < arrayLoans.length(); i++) {
+			l = new Loan();
+			l.fromJSONObject(arrayLoans.getJSONObject(i));
+			loans.add(l);
+		}
+		for (int i= 0; i < arrayReserve.length() ; i++) {
+			r = new Reserve();
+			r.fromJSONObject(arrayReserve.getJSONObject(i));
+			
+		}
+		
 	}
 }

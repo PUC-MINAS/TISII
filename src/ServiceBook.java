@@ -68,7 +68,7 @@ public class ServiceBook {
 
 	//Receives isbn from request and searches for it in the list
 	int index = getIndex(Long.parseLong(request.getParameter("isbn")));
-	List<Book>list = books.read();
+	List<Book>list = readAll();
 
 	//Deletes the book
 	boolean deleted=false;

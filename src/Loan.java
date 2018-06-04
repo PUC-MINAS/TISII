@@ -81,8 +81,8 @@ public class Loan implements JSONInterface{
 		// TODO Auto-generated method stub
 		JSONObject o = new JSONObject();
 		o.put("exemplaryCode", this.getExemplaryCode());
-		o.put("loanDate", this.getLoanDate());
-		o.put("returnDate", this.getReturnDate());
+		o.put("loanDate", this.getLoanDate().toString());
+		o.put("returnDate", this.getReturnDate().toString());
 		o.put("renewals", this.getRenewals());		
 		return o;
 	}
