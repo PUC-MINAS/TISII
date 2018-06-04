@@ -70,7 +70,7 @@ public class ServiceBook {
 	int index = getIndex(Long.parseLong(request.getParameter("isbn")));
 	List<Book>list = books.read();
 
-	//deletes the book
+	//Deletes the book
 	boolean deleted=false;
 	if(index>=0) {
 	    list.remove(index);
