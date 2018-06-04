@@ -25,11 +25,14 @@ body{
     margin-top: 15%;
 }
 
-#searchContainer {
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 20px;
+.painel {
     background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 10px;
+	padding: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	height: 100%;
+    max-height: 100%;
 }
 
 .bookData {
