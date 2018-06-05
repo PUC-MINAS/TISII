@@ -13,13 +13,12 @@ public class testeUser {
 		List<User> list = new ArrayList<User>();
 		List<Loan> loans = new ArrayList<Loan>();
 		List<Reserve> reserves = new ArrayList<Reserve>();
-		Book b = new Book("Livro1", "edit1", "port", 123, 1, "kkk", "author1");
-		Book a = new Book("Livro2", "edit2", "por2", 1234, 1, "kkk", "author2");
-		Exemplary ex1 = new Exemplary(123, false, a, "qwe");
-		Exemplary ex2 = new Exemplary(1234, false, b, "qwe");
+		List<Exemplary> exemplaries = ServiceExemplary.read(null);
+		Exemplary ex1 = exemplaries.get(0);
+		Exemplary ex2 = exemplaries.get(1);
 		loans.add(new Loan(ex1));
 		reserves.add(new Reserve(ex2));
-		User nUser = new User(
+		/*User nUser = new User(
 								"usernameTeste2",
 								"teste2@teste.com",
 								"senha2",
@@ -40,7 +39,7 @@ public class testeUser {
 		
 		nUser.setLoans(loans);
 		nUser.setReserves(reserves);
-		users.write(nUser);
+		users.write(nUser);*/
 		
 		listO = users.read();
 		

@@ -98,14 +98,25 @@ public class User implements JSONInterface {
 	public JSONObject toJSONObject() {
 		// TODO Auto-generated method stub
 		JSONObject o = new JSONObject();
+		JSONArray aLoans = new JSONArray();
+		JSONArray aReserve = new JSONArray();
 		o.put("username", this.getUsername());
 		o.put("password", this.getPassword());
 		o.put("email", this.getEmail());
 		o.put("type", this.getType());
 		o.put("status", this.getStatus());
 		o.put("data", this.getData().toJSONObject());
-		o.put("loans", this.getLoans());
-		o.put("reserves", this.getReserves());
+		
+		for (Loan l : this.getLoans()) {
+			aLoans.put(l.toJSONObject());
+		}
+		
+		for (Reserve r : this.getReserves()) {
+			aReserve.put(r.toJSONObject());
+		}
+		
+		o.put("loans", aLoans);
+		o.put("reserves", aReserve);
 		return o;
 	}
 
@@ -135,8 +146,10 @@ public class User implements JSONInterface {
 		for (int i= 0; i < arrayReserve.length() ; i++) {
 			r = new Reserve();
 			r.fromJSONObject(arrayReserve.getJSONObject(i));
-			
+			reserves.add(r);
 		}
+		this.setLoans(loans);
+		this.setReserves(reserves);
 		
 	}
 }
