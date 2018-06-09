@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.simpleframework.http.Query;
 import org.simpleframework.http.Request;
@@ -40,8 +41,17 @@ public class ServiceBook {
     }
 
     //returns a list of Books
-    public static List<Book> read(Request resquest) {
-		return readAll();
+    public static JSONArray read(Request resquest) {
+		List<Book> list = readAll();
+		JSONArray array = new JSONArray();
+		
+		for (Book b : list) {
+			JSONObject obj = b.toJSONObject();
+			obj.put("genreTitle", b.getGenre().title);
+			array.put(obj);
+		}
+		
+		return array;
     }
 
     //Updates a Book
@@ -56,7 +66,7 @@ public class ServiceBook {
 		    .setIsbn(Long.parseLong(request.getParameter("isbn")))
 		    .setGenre(Integer.parseInt(request.getParameter("genre")))
 		    .setSynopsis(request.getParameter("synopsis"))
-		    .setAuthor(request.getParameter("Author"))
+		    .setAuthor(request.getParameter("author"))
 		    .setSynopsis(request.getParameter("synopsis"));
 		    return true;
 		}
