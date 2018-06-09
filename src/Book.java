@@ -5,7 +5,7 @@ public class Book implements JSONInterface {
 	private String publishingCompany;
 	private String language;
 	private long isbn;
-	private int genre;
+	private Genre genre;
 	private String synopsis;
 	private String author;
 	
@@ -14,19 +14,30 @@ public class Book implements JSONInterface {
 		this.publishingCompany = publishingCompany;
 		this.language = language;
 		this.isbn = isbn;
-		this.genre = genre;
 		this.synopsis = synopsis;
 		this.author = author;
+		this.setGenre(genre);
 	}
 	
+	public Book setGenre(int genre) {
+		// TODO Auto-generated method stub
+		this.genre = ServiceGenre.search(genre);
+		return this;
+	}
+	
+	public Genre getGenre() {
+		return this.genre;
+	}
+	
+
 	public Book() {
 		this.name = null;
 		this.publishingCompany = null;
 		this.language = null;
 		this.isbn = 0;
-		this.genre = 0;
 		this.synopsis = null;
 		this.author = null;
+		this.genre = null;
 	}
 
 	public boolean equals(Book b) {
@@ -46,6 +57,7 @@ public class Book implements JSONInterface {
 	public String getPublishingCompany() {
 		return this.publishingCompany;
 	}
+	
 	public Book setPublishingCompany(String publishingCompany) {
 		this.publishingCompany = publishingCompany;
 		return this;
@@ -67,17 +79,11 @@ public class Book implements JSONInterface {
 		return this;
 	}
 	
-	public int getGenre() {
-		return this.genre;
-	}
-	public Book setGenre(int genre) {
-		this.genre = genre;
-		return this;
-	}
 	
 	public String getSynopsis() {
 		return this.synopsis;
 	}
+	
 	public Book setSynopsis(String synopsis) {
 		this.synopsis = synopsis;
 		return this;
@@ -94,7 +100,14 @@ public class Book implements JSONInterface {
 	@Override
 	public JSONObject toJSONObject() {
 		// TODO Auto-generated method stub
-		JSONObject o = new JSONObject(this);
+		JSONObject o = new JSONObject();
+		o.put("name", this.getName());
+		o.put("publishingCompany", this.getPublishingCompany());
+		o.put("language", this.getLanguage());
+		o.put("isbn", this.getIsbn());
+		o.put("genre", this.getGenre().id);
+		o.put("synopsis", this.getSynopsis());
+		o.put("author", this.getAuthor());
 		
 		return o;
 	}

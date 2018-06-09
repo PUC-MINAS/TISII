@@ -95,6 +95,22 @@ function fillSelectExemplary(){
 	});
 }
 
+
+function fillBookList(){
+	$.ajax({
+		url: "http://127.0.0.1:781/services/book/read",
+		type: 'GET',
+	}).done(function(response){
+		console.log(response);
+		if (response.status == 'OK'){
+			
+		}
+				
+	}).fail(function(){
+		
+	});
+}
+
 function createUser(){
 	var elements = $("#formUser")[0].elements;
 	$.ajax({
