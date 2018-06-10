@@ -16,6 +16,8 @@
     <!-- Custom styles for this template -->
     <link href="css/full.css" rel="stylesheet">
     <link href="css/ninive.css" rel="stylesheet">
+    <script src="scripts/userProfile.js"></script>
+
     <style>
       body{
         background-image: url("images/stacks.jpg");
@@ -46,10 +48,23 @@
     </nav>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container" id="profile-container">
       <div class="row">
-        <div class="cl-md-1 painel" id="profile-div">
-          
+        <div class="col-md-3 painel center" id="profile-div">
+          <img src="images/profile_pic.png" class="profile-pic responsive">
+          <br><br>
+          <label class="user-name">User Name</label>
+          <hr>
+          <label class="link" onclick="execRetrieveUser();">Dados de cadastro</label>
+          <br>
+          <label class="link" onclick="execRetrieveBorrowed();">Emprestimos</label>
+          <br>
+          <label class="link" onclick="execRetrieveReservs();">Reservas</label>
+          <br>
+          <label class="link" onclick="execRetrieveHistory();">Historico</label>
+        </div>
+        <div class="col-md-8 painel" id="info-profile-div"  onload="execRetrieveUser();">
+
         </div>
       </div>
     </div>
