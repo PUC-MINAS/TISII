@@ -100,6 +100,11 @@ public class HTTPServer implements Container{
 					sendResponse(Status.NOT_MODIFIED, response, msg.toString());
 				}
 			}
+			else if(path.startsWith("/services/user/get")) {
+				msg.put("users", ServiceUser.read());
+				msg.put("status", Status.OK);
+				sendResponse(Status.OK, response, msg.toString());
+			}
 			else {
 				this.notFind(response, path);
 			}

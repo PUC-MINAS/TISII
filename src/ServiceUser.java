@@ -128,6 +128,9 @@ public class ServiceUser {
 	}
 	
 	
+	public static List<User> read (){
+		return readAll();
+	}
 	
 	
 	
