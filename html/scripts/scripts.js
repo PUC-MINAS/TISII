@@ -102,6 +102,7 @@ function fillBookList(){
 		type: 'GET',
 	}).done(function(response){
 		console.log(response);
+		var div = $("#searchContainer");
 		if (response.status == 'OK'){
 			
 		}
