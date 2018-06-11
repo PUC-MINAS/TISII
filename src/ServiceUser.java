@@ -68,14 +68,18 @@ public class ServiceUser {
 			return false;
 		}
 	}
-	public static boolean loginWithEmailAndName(String email, String password){
+	
+	public static String loginWithEmailAndPassWord(Request request) {
 		List<User> list = readAll();
 		for (User u : list) {
-		    if( u.getEmail() == email&& u.getPassword()== password)
-		    	return true;
+
+			if (u.getEmail() == request.getParameter("email") && u.getPassword() == request.getParameter("password"))
+				return u.getData().getFirstName();
+
 		}
-		
-		return false;
+
+		return "Email ou senha Invalida";
+
 	}
 	
 	private static List<User> readAll(){
