@@ -104,12 +104,4 @@ public class ServiceUser {
 
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-
 }
