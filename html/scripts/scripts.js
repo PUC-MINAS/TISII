@@ -16,7 +16,8 @@ function createBook (){
       		
     	}
 	}).done(function(response){
-		if (response.status == "OK"){
+		console.log(response);
+		if (response.status == "CREATED"){
 			bootbox.alert({
 				message: "Cadastro realizado com sucesso",
 				size: "small",
@@ -94,24 +95,67 @@ function fillSelectExemplary(){
 	});
 }
 
+
+function fillBookList(){
+	$.ajax({
+		url: "http://127.0.0.1:781/services/book/read",
+		type: 'GET',
+	}).done(function(response){
+		console.log(response);
+		var div = $("#searchContainer");
+		if (response.status == 'OK'){
+			
+		}
+				
+	}).fail(function(){
+		
+	});
+}
+
 function createUser(){
 	var elements = $("#formUser")[0].elements;
-	var formData = new FormData($("#formUser")[0]); 
 	$.ajax({
 		url : "http://127.0.0.1:781/services/user/create",
 	    type : 'POST',
-	    processData: false,
-  		contentType: false,
-    	data : formData,
+    	data : {
+    		username: elements.username.value,
+    		type: elements.type.value,
+    		email: elements.email.value,
+    		password: elements.password.value,
+    		firstName: elements.firstName.value,
+    		lastName: elements.lastName.value,
+    		birth: elements.birth.value,
+    		docIdentity: elements.docIdentity.value,
+    		docCpf: elements.docCpf.value,
+    		phone: elements.phone.value,
+    		cel: elements.cel.value,
+    		adress: elements.address.value,
+    		number: elements.number.value,
+    		complement: elements.complement.value,
+    		cep: elements.cep.value,
+    		city: elements.city.value,
+    		state: elements.state.value
+    	},
     	beforeSend : function(){
       		
     	}
 	}).done(function(response){
-		bootbox.alert({
-			message: "Cadastro realizado com sucesso",
-			size: "small",
-			callback: function(){location.reload();}
-		});
+		console.log(response);
+		if (response.status == "CREATED"){
+			bootbox.alert({
+				message: "Cadastro realizado com sucesso",
+				size: "small",
+				callback: function(){location.reload();}
+			});
+		}
+		else {
+			bootbox.alert({
+				message: "Não foi possível realizar o cadastro.",
+				size: "small",
+				callback: function(){location.reload();}
+			});
+		}
+		
 	}).fail(function(){
 		bootbox.alert({
 			message: "Não foi possível realizar o cadastro.",

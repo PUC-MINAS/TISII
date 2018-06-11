@@ -1,13 +1,8 @@
 import java.time.LocalDate;
-
 import java.util.ArrayList;
-
 import java.util.List;
 
-
-
 import org.json.JSONObject;
-
 import org.simpleframework.http.Request;
 
 
@@ -25,6 +20,7 @@ public class ServiceUser {
 	public static boolean create(Request request) {
 
 		// TODO Auto-generated method stub
+
 
 		User user = new User();
 
@@ -116,29 +112,6 @@ public class ServiceUser {
 
 	
 
-	private static List<User> readAll(){
-
-		List<JSONObject> listJSON = users.read();
-
-		List<User> list = new ArrayList<User>();
-
-		
-
-		for (JSONObject j : listJSON) {
-
-			User u = new User();
-
-			u.fromJSONObject(j);
-
-			list.add(u);
-
-		}		
-
-		
-
-		return list;
-
-	}
 	
 	
 	public static boolean loginWithEmailAndName(String email, String password){
@@ -162,5 +135,20 @@ public class ServiceUser {
 	
 
 
+
+	
+	private static List<User> readAll(){
+		List<JSONObject> listJSON = users.read();
+		List<User> list = new ArrayList<User>();
+		
+		for (JSONObject j : listJSON) {
+			User u = new User();
+			u.fromJSONObject(j);
+			list.add(u);
+		}		
+		
+		return list;
+	}
+	
 
 }

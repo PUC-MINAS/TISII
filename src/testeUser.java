@@ -11,7 +11,13 @@ public class testeUser {
 		Archive<User> users = new Archive<User>("Archives/users.json");
 		List<JSONObject> listO;
 		List<User> list = new ArrayList<User>();
-		User u;
+		List<Loan> loans = new ArrayList<Loan>();
+		List<Reserve> reserves = new ArrayList<Reserve>();
+		List<Exemplary> exemplaries = ServiceExemplary.read(null);
+		Exemplary ex1 = exemplaries.get(0);
+		Exemplary ex2 = exemplaries.get(1);
+		loans.add(new Loan(ex1));
+		reserves.add(new Reserve(ex2));
 		/*User nUser = new User(
 								"usernameTeste2",
 								"teste2@teste.com",
@@ -31,12 +37,14 @@ public class testeUser {
 												)
 							);
 		
+		nUser.setLoans(loans);
+		nUser.setReserves(reserves);
 		users.write(nUser);*/
 		
 		listO = users.read();
 		
 		for (JSONObject o: listO) {
-			u = new User();
+			User u = new User();
 			u.fromJSONObject(o);
 			list.add(u);
 		}
