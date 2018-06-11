@@ -128,7 +128,19 @@ public class ServiceUser {
 	}
 	
 	
-	
+		public static User userWithEmail(Request resquest) {
+
+		List<User> list = readAll();
+
+		for (User u : list) {
+			if (u.getEmail() == resquest.getParameter("email"))
+				return u;
+		}
+
+		return null;
+
+	}
+
 	
 	
 
