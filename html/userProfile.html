@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Jonathas Sousa Leandro">
 
     <title>Ninive</title>
 
@@ -25,7 +25,7 @@
     </style>
   </head>
 
-  <body>
+  <body onload="execRetrieveUser();execRetrieveUserName();">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark standart">
@@ -40,7 +40,10 @@
               <a class="nav-link" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-toggle="modal" data-target="#modalLogin">LogIn</a>
+              <a  class="nav-link" data-toggle="modal" data-target="#modalLogin">LogIn</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link active" class="user-name"></a>
             </li>
           </ul>
         </div>
@@ -50,21 +53,26 @@
     <!-- Page Content -->
     <div class="container" id="profile-container">
       <div class="row">
-        <div class="col-md-3 painel center" id="profile-div">
-          <img src="images/profile_pic.png" class="profile-pic responsive">
-          <br><br>
-          <label class="user-name">User Name</label>
-          <hr>
-          <label class="link" onclick="execRetrieveUser();">Dados de cadastro</label>
-          <br>
-          <label class="link" onclick="execRetrieveBorrowed();">Emprestimos</label>
-          <br>
-          <label class="link" onclick="execRetrieveReservs();">Reservas</label>
-          <br>
-          <label class="link" onclick="execRetrieveHistory();">Historico</label>
+        <div class="col-md-3 center">
+          <div class="painel" id="profile-div">
+            <img src="images/profile_pic.png" class="profile-pic responsive">
+            <br><br>
+            <label id="user-name"></label>
+            <hr>
+            <img class="icon" src="images/book_icon.png">
+            <label class="link" onclick="execRetrieveUser();">Dados de cadastro</label>
+            <br>
+            <img class="icon" src="images/book_icon.png">
+            <label class="link" onclick="execRetrieveBorrowed();">Emprestimos</label>
+            <br>
+            <img class="icon" src="images/book_icon.png">
+            <label class="link" onclick="execRetrieveReservs();">Reservas</label>
+          </div>
         </div>
-        <div class="col-md-8 painel" id="info-profile-div"  onload="execRetrieveUser();">
+        <div class="col-md-8">
+          <div class="painel" id="info-profile-div">
 
+          </div>
         </div>
       </div>
     </div>
