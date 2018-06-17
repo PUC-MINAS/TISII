@@ -1,3 +1,14 @@
+function searchIndex(){
+	var search = $('#txtSearch').val();
+	document.location.href = "pesquisa.html?search=" + search;
+}
+
+function getIndexSearch(){
+	var parameters = document.location.search;
+	var search = parameters.slice(1).split("=")[1];
+	$("#txtSearch").val(search);
+}
+
 function createBook (){
 	var elements = $("#formBook")[0].elements;
 	$.ajax({
@@ -95,39 +106,6 @@ function fillSelectExemplary(){
 	});
 }
 
-/*<div class="row align-items-center" id="divModelo">	
-      		<div class= "col-md-2 col-sm-2 col-xs-2">
-      			<div class="row justify-content-md-center">
-      				<div class="col-md-2">
-      					<img src="images/book_icon.png" style="width: 60px; height: 60px;">		
-      				</div>
-      				
-      			</div>      			
-      		</div>
-      		<div class="col-md-7 col-sm-6 col-xs-6">
-      			<div class="row">
-      				<div class="col">
-      					<h5>Nome do livro</h5>
-      				</div>
-      			</div>
-      			<div class="row">
-      				<div class="col">
-      					<span>place autor</span>
-      				</div>
-      			</div>
-      			<div class="row">
-      				<div class="col">
-      					Genero: <span>Aventura</span> - Editora <span>Qualquer</span>
-      				</div>
-      			</div>
-      		</div>
-
-      		<div class="col-md-3 col-sm-4 col-xs-4">
-      			<button class="btn btn-default">Detatlhes</button>
-      			<button class="btn btn-primary">Reservar</button>
-      		</div>
-      	</div>*/
-
 function fillDivBook( book){
 	var divObj = document.createElement('div');
 	divObj.setAttribute("class", "row align-items-center" );
@@ -153,9 +131,11 @@ function fillDivBook( book){
 }
 
 function fillBookList(){
+	var search = $('#txtSearch').val();
 	$.ajax({
 		url: "http://127.0.0.1:781/services/book/read",
 		type: 'GET',
+		data: { search: search}
 	}).done(function(response){
 		console.log(response);
 		var div = $("#searchContainer")[0];

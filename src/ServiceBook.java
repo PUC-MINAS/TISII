@@ -41,15 +41,30 @@ public class ServiceBook {
     }
 
     //returns a list of Books
-    public static JSONArray read(Request resquest) {
+    public static JSONArray read(Request request) {
 		List<Book> list = readAll();
+		List<Book> list2 = new ArrayList<Book>();
 		JSONArray array = new JSONArray();
+		String search = request.getParameter("search");
 		
-		for (Book b : list) {
-			JSONObject obj = b.toJSONObject();
-			obj.put("genreTitle", b.getGenre().title);
-			array.put(obj);
+		if (search.isEmpty()) {
+			for (Book b : list) {
+				JSONObject obj = b.toJSONObject();
+				obj.put("genreTitle", b.getGenre().title);
+				array.put(obj);
+			}
 		}
+		else {
+			for (Book b : list) {
+				if (b.contains(search)) {
+					JSONObject obj = b.toJSONObject();
+					obj.put("genreTitle", b.getGenre().title);
+					array.put(obj);
+				}				
+			}
+		}
+		
+		
 		
 		return array;
     }
