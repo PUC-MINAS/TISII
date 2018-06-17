@@ -123,4 +123,12 @@ public class Book implements JSONInterface {
 		this.setSynopsis(o.getString("synopsis"));
 		this.setAuthor(o.getString("author"));
 	}
+
+	public boolean contains(String str) {
+		// TODO Auto-generated method stub
+		return this.getName().toLowerCase().contains(str.toLowerCase()) ||
+				this.getAuthor().toLowerCase().contains(str.toLowerCase()) ||
+				this.getPublishingCompany().toLowerCase().contains(str.toLowerCase()) ||
+				this.getSynopsis().toLowerCase().contains(str.toLowerCase());
+	}
 }
