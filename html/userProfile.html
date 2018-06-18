@@ -25,7 +25,7 @@
     </style>
   </head>
 
-  <body>
+  <body onload="logado();">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark standart">
@@ -39,8 +39,20 @@
             <li class="nav-item">
               <a class="nav-link" href="index.html">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="modal" data-target="#modalLogin">LogIn</a>
+            <li class="nav-item"> 
+              <a class="nav-link" href="pesquisa.html">Pesquisar</a>
+            </li>
+            <li class="nav-item">  
+              <a class="nav-link" href="cadastroLivro.html">Cadastrar Livro</a>
+            </li>
+            <li class="nav-item"> 
+              <a class="nav-link" href="cadastroExemplar.html">Cadastrar Exemplar</a>
+            </li>
+            <li class="nav-item" id="liLogin">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLogin">LogIn</a>
+            </li>
+            <li class="nav-item" id="liLogout">
+              <a class="nav-link" href="#" onclick="logout();">Logout</a>
             </li>
           </ul>
         </div>
@@ -113,6 +125,8 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="scripts/scripts.js"></script> 
+    <script type="text/javascript" src="scripts/bootbox.min.js"></script> 
 
   </body>
 

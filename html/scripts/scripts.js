@@ -259,3 +259,64 @@ function generateDataDiv() {
     dataDiv.classList.add("bookData");
     document.getElementById("searchContainer").appendChild(dataDiv);
 }
+
+function login(){
+	var email = $('#email').val();
+	var pwd = $('#pwd').val();
+
+	$.ajax({
+		url : "http://127.0.0.1:781/services/user/get",
+	    type : 'POST',
+    	data : {
+    		email: email,
+    		password: pwd
+    	},
+    	beforeSend : function(){
+      		
+    	}
+	}).done(function(response){
+		console.log(response);
+		if (response.user != null){
+			localStorage.user = "";
+			localStorage.user = JSON.stringify(response.user);
+			bootbox.alert({
+				message: "Bem vindo",
+				size: "small",
+				callback: function(){location.href = "userProfile.html" ;}
+			});		
+		}
+		else {
+			bootbox.alert({
+				message: "Login ou senha incorretos.",
+				size: "small",
+				callback: function(){location.reload();}
+			});
+		}
+			
+	}		
+	).fail(function(){
+		bootbox.alert({
+			message: "Falha na conexão com o servidor",
+			size: "small",
+			callback: function(){location.reload();}
+		});
+	});
+}
+
+function logout () {
+	localStorage.user = "";
+	location.href = "index.html";
+}
+
+function logado(){
+	if ( localStorage.user == "" || localStorage.user == undefined ){
+		$("#liLogin").css('display', 'block');
+		$("#liLogout").css('display', 'none');
+	}
+	else {
+		
+
+		$("#liLogin").css('display', 'none');
+		$("#liLogout").css('display', 'block');
+	}
+}
