@@ -69,12 +69,12 @@ public class ServiceUser {
 		}
 	}
 	
-	public static String loginWithEmailAndPassWord(Request request) {
+	public static JSONObject loginWithEmailAndPassWord(Request request) {
 		List<User> list = readAll();
 		for (User u : list) {
 
 			if (u.getEmail() == request.getParameter("email") && u.getPassword() == request.getParameter("password"))
-				return u.getData().getFirstName();
+				return u.toJSONObject();
 
 		}
 
@@ -96,13 +96,16 @@ public class ServiceUser {
 		return list;
 	}
 	
-	public static User userWithEmail(Request resquest) {
+	public static JSONObject userWithEmail(Request resquest) {
 
 		List<User> list = readAll();
 
 		for (User u : list) {
-			if (u.getEmail() == resquest.getParameter("email"))
-				return u;
+		
+			if (u.getEmail() == resquest.getParameter("email")) {
+				JSONObject obj = u.toJSONObject();
+				return obj;
+				}
 		}
 
 		return null;
