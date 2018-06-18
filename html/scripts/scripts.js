@@ -132,6 +132,7 @@ function fillDivBook( book){
 
 function fillBookList(idInput, idContainer){
 	var search = $('#'+idInput).val();
+	$("#"+idContainer).html('');
 	$.ajax({
 		url: "http://127.0.0.1:781/services/book/read",
 		type: 'GET',
