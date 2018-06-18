@@ -130,15 +130,15 @@ function fillDivBook( book){
 	return divObj;
 }
 
-function fillBookList(){
-	var search = $('#txtSearch').val();
+function fillBookList(idInput, idContainer){
+	var search = $('#'+idInput).val();
 	$.ajax({
 		url: "http://127.0.0.1:781/services/book/read",
 		type: 'GET',
 		data: { search: search}
 	}).done(function(response){
 		console.log(response);
-		var div = $("#searchContainer")[0];
+		var div = $("#"+idContainer)[0];
 		if (response.status == 'OK'){
 			var books = response.books;
 			var divBook ;
