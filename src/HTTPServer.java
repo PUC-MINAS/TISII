@@ -101,7 +101,7 @@ public class HTTPServer implements Container{
 				}
 			}
 			else if(path.startsWith("/services/user/get")) {
-				
+				msg.put("user", ServiceUser.loginWithEmailAndPassWord(request));
 				msg.put("status", Status.OK);
 				sendResponse(Status.OK, response, msg.toString());
 			}

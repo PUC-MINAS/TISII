@@ -25,7 +25,7 @@
     </style>
   </head>
 
-  <body onload="getIndexSearch();fillBookList('txtSearch','searchContainer' );">
+  <body onload="logado();getIndexSearch();fillBookList('txtSearch','searchContainer' );">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark standart">
@@ -56,8 +56,11 @@
               <a class="nav-link" href="#">About</a>
             </li>
             -->
-            <li class="nav-item">
+            <li class="nav-item" id="liLogin">
               <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLogin">LogIn</a>
+            </li>
+            <li class="nav-item" id="liLogout">
+              <a class="nav-link" href="#" onclick="logout();">Logout</a>
             </li>
           </ul>
         </div>
@@ -112,7 +115,7 @@
                   <label display="block"><input type="checkbox"> Lembre se de mim</label>
                   <br></label><a href="cadastrarUsuario.html">Ainda não tenho conta</a>
                 </div>
-                <button type="submit" class="btn btn-default">Login</button>
+                <button type="button" class="btn btn-default" onclick="login();">Login</button>
               </form>
           </div>
 

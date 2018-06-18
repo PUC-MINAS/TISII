@@ -73,13 +73,13 @@ public class ServiceUser {
 		List<User> list = readAll();
 		for (User u : list) {
 
-			if (u.getEmail() == request.getParameter("email") && u.getPassword() == request.getParameter("password"))
+			if (u.getEmail().compareTo(request.getParameter("email")) == 0 &&
+				u.getPassword().compareTo(request.getParameter("password")) == 0 )
 				return u.toJSONObject();
 
 		}
-
-
-		return "Email ou senha Invalida";
+		
+		return null;
 
 	}
 	
